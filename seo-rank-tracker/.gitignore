@@ -7,3 +7,4 @@ token*.json
 data/results/*
 !data/results/.gitkeep
 reports/*
+!reports/.gitkeep

@@ -1,4 +1,0 @@
-timestamp,source,engine,surface,scenario,language,query,country,city,device,average_position,exact_organic_position,url,title,clicks,impressions,ctr,ai_feature_present,brand_mentioned,domain_cited,citation_url,status,error
-2026-07-19T01:20:21.258850+00:00,google_search_console,google,search_console,TOURIST_IN_BARCELONA,,,,,,,,,,,,,,,,,ok,dry-run: 2026-07-12 to 2026-07-18
-2026-07-19T01:20:21.259398+00:00,bing_webmaster,bing,bing_webmaster,,,,,,,,,,,,,,,,,,ok,dry-run: no external connection
-2026-07-19T01:20:21.260239+00:00,google_search_console,google,google_generative_ai,,,,,,,,,,,,,,,,,,ok,dry-run: 0 import files found

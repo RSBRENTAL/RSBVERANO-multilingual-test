@@ -10,3 +10,7 @@ def test_average_position_not_exact_position():
     assert row["exact_organic_position"] == ""
     with pytest.raises(ValueError):
         Result(average_position="4.2", exact_organic_position="4")
+
+def test_dry_run_status_required():
+    with pytest.raises(ValueError):
+        Result(status="ok", error="dry-run: no")
