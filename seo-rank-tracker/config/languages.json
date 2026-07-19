@@ -1,0 +1,14 @@
+{
+  "languages": [
+    {"code": "en", "name": "English", "path": "/"},
+    {"code": "es", "name": "Spanish", "path": "/es/"},
+    {"code": "fr", "name": "French", "path": "/fr/"},
+    {"code": "it", "name": "Italian", "path": "/it/"},
+    {"code": "de", "name": "German", "path": "/de/"},
+    {"code": "nl", "name": "Dutch", "path": "/nl/"},
+    {"code": "pt", "name": "Portuguese", "path": "/pt/"},
+    {"code": "ca", "name": "Catalan", "path": "/cat/"},
+    {"code": "sv", "name": "Swedish", "path": "/sv/"},
+    {"code": "pl", "name": "Polish", "path": "/pl/"}
+  ]
+}

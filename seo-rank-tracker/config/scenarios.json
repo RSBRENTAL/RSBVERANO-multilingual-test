@@ -1,0 +1,6 @@
+{
+  "scenarios": [
+    {"id": "TOURIST_IN_BARCELONA", "active": true, "search_country": "ES", "search_city": "Barcelona", "latitude": 41.387397, "longitude": 2.168568},
+    {"id": "PRE_TRIP_ORIGIN", "active": false, "search_country": "", "search_city": "", "latitude": "", "longitude": ""}
+  ]
+}
