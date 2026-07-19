@@ -3,7 +3,9 @@ from datetime import date
 from .connectors import google_search_console, bing_webmaster, google_ai_import
 from .reports.export_csv import export as export_csv
 from .reports.export_html import export as export_html
-from .config import load_queries, language_paths, load_json
+from .config import load_queries, language_paths, load_json, ROOT
+from .storage import read_results
+from .models import Result
 
 
 def maybe_export(args, rows, path):
@@ -23,8 +25,29 @@ def run_import_google_ai(args):
     rows = google_ai_import.run(dry_run=args.dry_run)
     return maybe_export(args, rows, "reports/google-generative-ai.csv")
 
+SOURCE_REPORTS = [
+    "reports/google-search-console.csv",
+    "reports/bing-webmaster.csv",
+    "reports/google-generative-ai.csv",
+]
+
+def load_source_reports():
+    combined = []
+    existing = []
+    for relative_path in SOURCE_REPORTS:
+        path = ROOT / relative_path
+        if path.exists():
+            existing.append(relative_path)
+            combined.extend(read_results(relative_path))
+    return combined, existing
+
 def run_report(rows=None, dry_run=False):
-    rows = rows or []
+    if rows is None:
+        loaded_rows, existing = load_source_reports()
+        if dry_run:
+            missing = [path for path in SOURCE_REPORTS if path not in existing]
+            return [Result(source="report", status="dry_run", error=f"dry_run: would read={','.join(SOURCE_REPORTS)}; existing={','.join(existing) or 'none'}; missing={','.join(missing) or 'none'}; rows_available={len(loaded_rows)}").to_row()]
+        rows = loaded_rows or [Result(source="report", status="no_data", error="No disponible: no source report files found").to_row()]
     if not dry_run:
         export_csv(rows, "reports/latest-report.csv")
         export_html(rows, "reports/latest-report.html")
@@ -68,7 +91,7 @@ def main(argv=None):
     if args.command == "google": rows = run_google(args)
     elif args.command == "bing": rows = run_bing(args)
     elif args.command == "import-google-ai": rows = run_import_google_ai(args)
-    elif args.command == "report": rows = run_report([], dry_run=args.dry_run)
+    elif args.command == "report": rows = run_report(rows=None, dry_run=args.dry_run)
     elif args.command == "all":
         rows.extend(run_google(args)); rows.extend(run_bing(args)); rows.extend(run_import_google_ai(args)); run_report(rows, dry_run=args.dry_run)
     if args.dry_run:

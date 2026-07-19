@@ -101,3 +101,7 @@ La herramienta pagina Search Console hasta recibir menos de 25.000 filas o respu
 Cuando el periodo actual o anterior alcance ese límite, se generan filas de advertencia separadas con `current_period_data_limit_reached`, `previous_period_data_limit_reached` y `data_limit_reached`. Si el límite afecta al periodo anterior, `comparison_reliable=false` y el cambio de posición no se presenta como comparación fiable.
 
 Las filas `period_summary` conservan `status=ok` aunque estén afectadas por límites, pero rellenan `current_period_data_limit_reached`, `previous_period_data_limit_reached`, `current_period_limit_days`, `previous_period_limit_days`, `data_limit_reached` y `comparison_reliable=false`. Las advertencias de límite se generan como filas separadas con `limit_period=current` o `limit_period=previous`.
+
+## Comando report
+
+`python -m src.main all` ejecuta los conectores habilitados y genera el informe conjunto. `python -m src.main report` no ejecuta APIs ni conectores: combina los CSV locales existentes `reports/google-search-console.csv`, `reports/bing-webmaster.csv` y `reports/google-generative-ai.csv` para generar `reports/latest-report.csv` y `reports/latest-report.html`. Genera primero esos CSV fuente con `google`, `bing`, `import-google-ai` o `all`. Si no existe ningún informe fuente, `report` devuelve una fila `status=no_data` con `No disponible: no source report files found`. `python -m src.main report --dry-run` no escribe archivos y solo informa qué CSV locales leería, cuáles existen y cuántas filas combinaría.
