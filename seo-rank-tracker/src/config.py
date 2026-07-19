@@ -4,7 +4,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 try:
     from dotenv import load_dotenv
-except ImportError:  # pragma: no cover - dependency absence is handled by env fallback
+except ImportError:  # pragma: no cover
     load_dotenv = None
 
 def _fallback_load_dotenv(path):
@@ -42,12 +42,34 @@ def load_queries(include_inactive=True):
         return rows
     return [row for row in rows if row.get("active", "").lower() == "true"]
 
-def query_lookup(include_inactive=True):
+def query_lookup(include_inactive=False, engine="google", surface="search_console"):
     lookup = {}
+    duplicates = []
     for row in load_queries(include_inactive=include_inactive):
-        key = (normalize_query(row.get("query")), (row.get("device") or "").casefold())
-        lookup.setdefault(key, row)
+        if not include_inactive and row.get("active", "").lower() != "true":
+            continue
+        key = (normalize_query(row.get("query")), (row.get("device") or "").casefold(), (row.get("engine") or "").casefold(), (row.get("surface") or "").casefold())
+        if engine and key[2] != engine:
+            continue
+        if surface and key[3] != surface:
+            continue
+        if key in lookup:
+            duplicates.append(key)
+        lookup[key] = row
+    if duplicates:
+        raise ValueError(f"Duplicate active query keys: {duplicates}")
     return lookup
+
+def active_unique_queries(engine="google", surface="search_console"):
+    seen = []
+    keys = set()
+    for row in load_queries(include_inactive=False):
+        if row.get("engine") != engine or row.get("surface") != surface:
+            continue
+        key = normalize_query(row.get("query"))
+        if key not in keys:
+            keys.add(key); seen.append(row.get("query", ""))
+    return seen
 
 def env(name):
     return os.environ.get(name, "")

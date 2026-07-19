@@ -15,7 +15,7 @@ def run_google(args):
     return maybe_export(args, rows, "reports/google-search-console.csv")
 
 def run_bing(args):
-    rows = bing_webmaster.run(dry_run=args.dry_run)
+    rows = bing_webmaster.run(dry_run=args.dry_run, bing_detailed=args.bing_detailed)
     return maybe_export(args, rows, "reports/bing-webmaster.csv")
 
 def run_import_google_ai(args):
@@ -43,6 +43,7 @@ def build_parser():
     parser.add_argument("--period", default="7d", choices=["7d","28d","3m","custom"])
     parser.add_argument("--start-date", default="")
     parser.add_argument("--end-date", default="")
+    parser.add_argument("--bing-detailed", action="store_true", help="Run detailed Bing GetQueryPageStats for each unique active query")
     return parser
 
 def main(argv=None):

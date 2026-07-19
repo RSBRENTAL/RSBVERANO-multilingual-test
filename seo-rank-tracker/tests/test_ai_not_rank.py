@@ -5,29 +5,24 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import types
 import pytest
 from src.models import Result
-from src.connectors.google_search_console import period_range, previous_period, enrich_row, QUERY_DIMENSIONS, authorize
+from src.connectors.google_search_console import period_range, previous_period, enrich_daily, QUERY_DIMENSIONS, authorize, aggregate_period, fetch_daily, discover_latest_date, language_from_page
 from src.connectors.google_search_console import run as run_gsc
-from src.connectors.bing_webmaster import run as run_bing
-from src.connectors.google_ai_import import run as run_ai_import
+from src.connectors.bing_webmaster import run as run_bing, bing_date_to_iso, parse_page_stats, parse_query_stats
+from src.connectors.google_ai_import import run as run_ai_import, explicit_ai_present
 
 
 def test_ai_mentions_never_rank():
-    row = Result(surface="google_generative_ai", brand_mentioned="true").to_row()
-    assert row["exact_organic_position"] == ""
-    with pytest.raises(ValueError):
-        Result(surface="google_generative_ai", brand_mentioned="true", exact_organic_position="1")
+    assert Result(surface="google_generative_ai", brand_mentioned="true").to_row()["exact_organic_position"] == ""
+    with pytest.raises(ValueError): Result(surface="google_generative_ai", brand_mentioned="true", exact_organic_position="1")
 
 
 def test_periods_and_previous_period():
-    start, end = period_range("7d")
-    ps, pe = previous_period("2026-07-08", "2026-07-14")
-    assert (ps, pe) == ("2026-07-01", "2026-07-07")
-    assert start <= end
+    assert previous_period("2026-07-08", "2026-07-14") == ("2026-07-01", "2026-07-07")
+    assert period_range("7d", latest_date="2026-07-18") == ("2026-07-12", "2026-07-18")
 
 
 def test_missing_credentials_empty_import_and_dry_run(monkeypatch):
-    for key in ["GSC_PROPERTY", "GOOGLE_CLIENT_SECRET_FILE", "GOOGLE_TOKEN_FILE", "BING_WEBMASTER_API_KEY", "BING_SITE_URL"]:
-        monkeypatch.delenv(key, raising=False)
+    for key in ["GSC_PROPERTY", "GOOGLE_CLIENT_SECRET_FILE", "GOOGLE_TOKEN_FILE", "BING_WEBMASTER_API_KEY", "BING_SITE_URL"]: monkeypatch.delenv(key, raising=False)
     assert run_gsc()[0]["status"] == "error"
     assert run_bing()[0]["status"] == "error"
     assert run_ai_import()[0]["status"] in {"no_data", "ok"}
@@ -36,36 +31,61 @@ def test_missing_credentials_empty_import_and_dry_run(monkeypatch):
     assert run_ai_import(dry_run=True)[0]["status"] == "dry_run"
 
 
-def test_gsc_date_dimension_and_query_enrichment():
+def test_gsc_daily_dimension_query_enrichment_no_scenario_city():
     assert QUERY_DIMENSIONS == ["date", "query", "page", "country", "device"]
-    item = {"keys": ["2026-07-18", "  Scooter Rental Barcelona ", "https://rentalscooterbarcelona.com/", "esp", "mobile"], "position": 3.5, "clicks": 1, "impressions": 10, "ctr": 0.1}
-    prev = {("  Scooter Rental Barcelona ", "https://rentalscooterbarcelona.com/", "esp", "mobile"): 5.0}
-    configured = {("scooter rental barcelona", "mobile"): {"query_id":"qid", "category":"scooter", "language":"en", "scenario":"TOURIST_IN_BARCELONA", "search_city":"Barcelona", "expected_language_path":"/"}}
-    row = enrich_row(item, configured, "7d", prev)
-    assert row["date"] == "2026-07-18"
-    assert row["configured_query"] == "true"
-    assert row["language_source"] == "configured_query"
-    assert row["query_id"] == "qid"
-    assert row["previous_average_position"] == "5.0"
-    assert row["position_change"] == "-1.5"
-    assert row["exact_organic_position"] == ""
+    item = {"keys": ["2026-07-18", "Scooter Rental Barcelona", "https://rentalscooterbarcelona.com/", "esp", "mobile"], "position": 3.5, "clicks": 1, "impressions": 10, "ctr": 0.1}
+    configured = {("scooter rental barcelona", "mobile", "google", "search_console"): {"query_id":"qid", "category":"scooter", "language":"en", "expected_language_path":"/"}}
+    row = enrich_daily(item, configured, "7d")
+    assert row["date"] == "2026-07-18" and row["row_type"] == "daily"
+    assert row["configured_query"] == "true" and row["language_source"] == "configured_query"
+    assert row["scenario"] == "" and row["city"] == ""
+    assert row["country"] == "esp" and row["country_format"] == "iso_3166_1_alpha_3"
 
 
-def test_unconfigured_query_language_source():
-    item = {"keys": ["2026-07-18", "consulta rara", "https://rentalscooterbarcelona.com/cat/page/", "esp", "desktop"], "position": 8}
-    row = enrich_row(item, {}, "7d", {})
+def test_unknown_query_unknown_language_and_safe_cat_path():
+    item = {"keys": ["2026-07-18", "zzzz qqqq", "https://rentalscooterbarcelona.com/catalog/page/", "esp", "desktop"], "position": 8}
+    row = enrich_daily(item, {}, "7d")
     assert row["configured_query"] == "false"
-    assert row["language"] == "ca"
-    assert row["language_source"] == "landing_page_path"
+    assert row["language"] == "unknown" and row["language_source"] == "unknown"
+    assert language_from_page("https://rentalscooterbarcelona.com/cat/page/") == ("ca", "landing_page_path")
+    assert language_from_page("https://rentalscooterbarcelona.com/catalog/page/") == ("unknown", "unknown")
+
+
+def test_weighted_period_summary_and_no_day_overwrite():
+    current = [Result(row_type="daily", query="q", url="u", country="esp", device="mobile", clicks="1", impressions="10", average_position="2").to_row(), Result(row_type="daily", query="q", url="u", country="esp", device="mobile", clicks="3", impressions="30", average_position="4").to_row()]
+    previous = [Result(row_type="daily", query="q", url="u", country="esp", device="mobile", clicks="1", impressions="20", average_position="5").to_row()]
+    summary = aggregate_period(current, "7d", previous)[0]
+    assert summary["row_type"] == "period_summary"
+    assert summary["clicks"] == "4.0" and summary["impressions"] == "40.0"
+    assert summary["average_position"] == "3.5"
+    assert summary["previous_average_position"] == "5.0"
+    assert summary["position_change"] == "-1.5"
+
+
+def test_fetch_daily_paginates_each_day_and_latest_date():
+    calls=[]
+    class Q:
+        def __init__(self, rows): self.rows=rows
+        def execute(self): return {"rows": self.rows}
+    class SA:
+        def query(self, siteUrl, body):
+            calls.append(body.copy())
+            if body["dimensions"] == ["date"]: return Q([{"keys":["2026-07-15"]},{"keys":["2026-07-18"]}])
+            if body["startRow"] == 0: return Q([{"keys":[body["startDate"],"q","u","esp","mobile"]}] * 25000)
+            return Q([])
+    class S: 
+        def searchanalytics(self): return SA()
+    assert discover_latest_date(S(), "site") == "2026-07-18"
+    rows, omitted = fetch_daily(S(), "site", "2026-07-17", "2026-07-18")
+    assert len(rows) == 50000 and omitted == ["2026-07-17", "2026-07-18"]
+    assert {c["startDate"] for c in calls if c["dimensions"] != ["date"]} == {"2026-07-17", "2026-07-18"}
 
 
 def test_first_oauth_without_token(monkeypatch, tmp_path):
     secret = tmp_path / "client_secret.json"; secret.write_text("{}")
-    token = tmp_path / "token.json"
-    monkeypatch.setenv("GOOGLE_CLIENT_SECRET_FILE", str(secret))
-    monkeypatch.setenv("GOOGLE_TOKEN_FILE", str(token))
+    token = tmp_path / "token.json"; monkeypatch.setenv("GOOGLE_CLIENT_SECRET_FILE", str(secret)); monkeypatch.setenv("GOOGLE_TOKEN_FILE", str(token))
     class FakeCreds:
-        valid = True; expired = False; refresh_token = None
+        valid=True; expired=False; refresh_token=None
         def to_json(self): return '{"token":"x"}'
     class FakeFlow:
         @classmethod
@@ -74,33 +94,40 @@ def test_first_oauth_without_token(monkeypatch, tmp_path):
     sys.modules['google.auth.transport.requests'] = types.SimpleNamespace(Request=object)
     sys.modules['google.oauth2.credentials'] = types.SimpleNamespace(Credentials=types.SimpleNamespace(from_authorized_user_file=lambda *a, **k: None))
     sys.modules['google_auth_oauthlib.flow'] = types.SimpleNamespace(InstalledAppFlow=FakeFlow)
-    assert authorize().valid
-    assert token.exists()
+    assert authorize().valid and token.exists()
 
 
 def test_refresh_and_invalid_token(monkeypatch, tmp_path):
     secret = tmp_path / "client_secret.json"; secret.write_text("{}")
     token = tmp_path / "token.json"; token.write_text("{}")
-    monkeypatch.setenv("GOOGLE_CLIENT_SECRET_FILE", str(secret))
-    monkeypatch.setenv("GOOGLE_TOKEN_FILE", str(token))
+    monkeypatch.setenv("GOOGLE_CLIENT_SECRET_FILE", str(secret)); monkeypatch.setenv("GOOGLE_TOKEN_FILE", str(token))
     class FakeCreds:
-        valid = False; expired = True; refresh_token = "r"
-        def refresh(self, request): self.valid = True; self.expired = False
+        valid=False; expired=True; refresh_token="r"
+        def refresh(self, request): self.valid=True; self.expired=False
         def to_json(self): return '{"token":"refreshed"}'
     sys.modules['google.auth.transport.requests'] = types.SimpleNamespace(Request=object)
     sys.modules['google.oauth2.credentials'] = types.SimpleNamespace(Credentials=types.SimpleNamespace(from_authorized_user_file=lambda *a, **k: FakeCreds()))
     sys.modules['google_auth_oauthlib.flow'] = types.SimpleNamespace(InstalledAppFlow=object)
     assert authorize().valid
     sys.modules['google.oauth2.credentials'] = types.SimpleNamespace(Credentials=types.SimpleNamespace(from_authorized_user_file=lambda *a, **k: (_ for _ in ()).throw(ValueError("bad"))))
-    with pytest.raises(ValueError):
-        authorize()
+    with pytest.raises(ValueError): authorize()
 
 
-def test_bing_simulated_response(monkeypatch):
-    monkeypatch.setenv("BING_WEBMASTER_API_KEY", "k")
-    monkeypatch.setenv("BING_SITE_URL", "https://example.com/")
+def test_bing_methods_dates_ctr_endpoint_and_query_param(monkeypatch):
+    monkeypatch.setenv("BING_WEBMASTER_API_KEY", "k"); monkeypatch.setenv("BING_SITE_URL", "https://example.com/")
+    assert bing_date_to_iso("/Date(1721260800000)/") == "2024-07-18"
+    page = parse_page_stats({"Query":"https://example.com/p", "Clicks":2, "Impressions":4})
+    assert page["url"] == "https://example.com/p" and page["query"] == "" and page["ctr"] == "0.5" and page["error"] == "" and page["endpoint"] == "GetPageStats"
     import src.connectors.bing_webmaster as bing
-    monkeypatch.setattr(bing, "_get", lambda method: {"d": [{"Date":"2026-07-18", "Query":"q", "Page":"u", "Clicks":2, "Impressions":4, "AvgImpressionPosition":3.2}]})
-    rows = run_bing()
-    assert rows[0]["source"] == "bing_webmaster"
-    assert rows[0]["average_position"] == "3.2"
+    seen=[]
+    monkeypatch.setattr(bing, "active_unique_queries", lambda: ["q1", "q2"])
+    monkeypatch.setattr(bing, "_get", lambda method, **params: seen.append((method, params)) or {"d": [{"Query":"q", "Clicks":1, "Impressions":2}]})
+    rows = bing.run(bing_detailed=True)
+    assert any(m == "GetQueryPageStats" and p.get("query") for m,p in seen)
+    assert all(not (m == "GetQueryPageStats" and "query" not in p) for m,p in seen)
+    assert rows[0]["status"] == "ok" and rows[0]["error"] == ""
+
+
+def test_ai_feature_not_invented():
+    assert explicit_ai_present({}, "") == ""
+    assert explicit_ai_present({"ai_feature_present":"true"}, "") == "true"

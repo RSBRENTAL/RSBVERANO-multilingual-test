@@ -2,21 +2,24 @@ from dataclasses import dataclass, asdict
 from datetime import datetime, timezone
 
 RESULT_COLUMNS = [
-    "timestamp", "date", "source", "engine", "surface", "scenario", "language", "language_source",
-    "query_id", "category", "configured_query", "query", "expected_language_path", "country", "city", "device",
+    "timestamp", "date", "row_type", "source", "engine", "surface", "endpoint", "scenario", "language", "language_source",
+    "query_id", "category", "configured_query", "query", "expected_language_path", "country", "country_format", "city", "device",
     "period", "average_position", "previous_average_position", "position_change", "exact_organic_position",
     "url", "title", "clicks", "impressions", "ctr", "ai_feature_present", "brand_mentioned",
     "domain_cited", "citation_url", "status", "error",
 ]
 QUERY_COLUMNS = ["query_id","category","language","scenario","search_country","search_city","latitude","longitude","device","engine","surface","query","expected_language_path","active"]
+ROW_TYPES = {"", "daily", "period_summary"}
 
 @dataclass
 class Result:
     timestamp: str = ""
     date: str = ""
+    row_type: str = ""
     source: str = ""
     engine: str = ""
     surface: str = ""
+    endpoint: str = ""
     scenario: str = ""
     language: str = ""
     language_source: str = ""
@@ -26,6 +29,7 @@ class Result:
     query: str = ""
     expected_language_path: str = ""
     country: str = ""
+    country_format: str = ""
     city: str = ""
     device: str = ""
     period: str = ""
@@ -48,6 +52,8 @@ class Result:
     def __post_init__(self):
         if not self.timestamp:
             self.timestamp = datetime.now(timezone.utc).isoformat()
+        if self.row_type not in ROW_TYPES:
+            raise ValueError("invalid row_type")
         if self.average_position and self.exact_organic_position:
             raise ValueError("average_position must not be copied into exact_organic_position")
         if self.surface in {"google_generative_ai", "ai_answer"} and self.exact_organic_position:
