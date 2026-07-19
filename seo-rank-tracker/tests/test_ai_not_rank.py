@@ -300,3 +300,87 @@ def test_ai_feature_explicit_values_only():
     assert explicit_ai_present({"ai_feature_present":"no"}) == "false"
     assert explicit_ai_present({"ai_feature_present":"maybe"}) == ""
     assert explicit_ai_present({"ai_feature_present":"enabled"}) == ""
+
+
+def test_bing_items_empty_and_result_shapes():
+    from src.connectors.bing_webmaster import _items
+    assert _items({"d": {}}) == []
+    assert _items({"d": []}) == []
+    assert _items(None) == []
+    assert _items({"d": {"Results": [{"Query": "q"}]}}) == [{"Query": "q"}]
+    assert _items({"d": {"Query": "q", "Clicks": 1}}) == [{"Query": "q", "Clicks": 1}]
+
+
+def test_bing_no_data_when_successful_empty(monkeypatch):
+    import src.connectors.bing_webmaster as bing
+    monkeypatch.setenv("BING_WEBMASTER_API_KEY", "k")
+    monkeypatch.setenv("BING_SITE_URL", "site")
+    monkeypatch.setattr(bing, "_get", lambda method, **params: {"d": []})
+    rows = bing.run()
+    assert len(rows) == 1
+    assert rows[0]["status"] == "no_data"
+    assert rows[0]["error"] == "No disponible: Bing Webmaster returned no statistics"
+
+
+def test_bing_partial_success_adds_warning(monkeypatch):
+    import src.connectors.bing_webmaster as bing
+    monkeypatch.setenv("BING_WEBMASTER_API_KEY", "k")
+    monkeypatch.setenv("BING_SITE_URL", "site")
+    def fake_get(method, **params):
+        if method == "GetPageStats":
+            raise RuntimeError("not supported")
+        return {"d": [{"Query": "q", "Clicks": 1, "Impressions": 2}]}
+    monkeypatch.setattr(bing, "_get", fake_get)
+    rows = bing.run()
+    assert any(r["status"] == "ok" for r in rows)
+    warning = [r for r in rows if r["status"] == "warning"][0]
+    assert warning["endpoint"] == "GetPageStats"
+    assert "GetPageStats unavailable or unsupported" in warning["error"]
+
+
+def test_bing_total_failure_returns_error(monkeypatch):
+    import src.connectors.bing_webmaster as bing
+    monkeypatch.setenv("BING_WEBMASTER_API_KEY", "k")
+    monkeypatch.setenv("BING_SITE_URL", "site")
+    monkeypatch.setattr(bing, "_get", lambda method, **params: (_ for _ in ()).throw(RuntimeError(f"{method} boom")))
+    rows = bing.run()
+    assert len(rows) == 1
+    assert rows[0]["status"] == "error"
+    assert "GetQueryStats" in rows[0]["error"] and "GetPageStats" in rows[0]["error"] and "GetRankAndTrafficStats" in rows[0]["error"]
+
+
+def test_bing_detailed_partial_success_adds_query_warning(monkeypatch):
+    import src.connectors.bing_webmaster as bing
+    monkeypatch.setenv("BING_WEBMASTER_API_KEY", "k")
+    monkeypatch.setenv("BING_SITE_URL", "site")
+    monkeypatch.setattr(bing, "active_unique_queries", lambda: ["ok query", "bad query"])
+    def fake_get(method, **params):
+        if method in bing.GENERAL_METHODS:
+            return {"d": []}
+        if params.get("query") == "bad query":
+            raise RuntimeError("query failed")
+        return {"d": [{"Query": "returned", "Clicks": 1, "Impressions": 2}]}
+    monkeypatch.setattr(bing, "_get", fake_get)
+    rows = bing.run(bing_detailed=True)
+    ok = [r for r in rows if r["status"] == "ok"]
+    warnings = [r for r in rows if r["status"] == "warning"]
+    assert ok and ok[0]["requested_query"] == "ok query"
+    assert len(warnings) == 1
+    assert warnings[0]["endpoint"] == "GetQueryPageStats"
+    assert warnings[0]["requested_query"] == "bad query"
+    assert warnings[0]["url"] == "" and warnings[0]["clicks"] == "" and warnings[0]["impressions"] == ""
+
+
+def test_bing_empty_responses_do_not_create_ok_rows_and_dry_run_no_connection(monkeypatch):
+    import src.connectors.bing_webmaster as bing
+    monkeypatch.setenv("BING_WEBMASTER_API_KEY", "k")
+    monkeypatch.setenv("BING_SITE_URL", "site")
+    called = {"value": False}
+    def fake_get(method, **params):
+        called["value"] = True
+        return {"d": {}}
+    monkeypatch.setattr(bing, "_get", fake_get)
+    assert all(r["status"] != "ok" for r in bing.run())
+    called["value"] = False
+    assert bing.run(dry_run=True)[0]["status"] == "dry_run"
+    assert called["value"] is False
