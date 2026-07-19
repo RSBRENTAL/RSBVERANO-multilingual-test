@@ -91,3 +91,9 @@ Por defecto Bing ejecuta solo métodos generales. Para llamar `GetQueryPageStats
 ```bash
 python -m src.main bing --bing-detailed
 ```
+
+Bing `GetQueryPageStats` conserva `requested_query` y `returned_query_value`. Solo rellena `url` si Bing devuelve explícitamente un campo `Page` o `Url`; si no existe, la URL queda vacía porque el endpoint no documenta una página en todos los contratos/respuestas.
+
+## Límite diario Search Console
+
+La herramienta pagina Search Console hasta recibir menos de 25.000 filas o respuesta vacía. Solo marca `data_limit_reached=true` y `status=warning` cuando se alcanzan 50.000 filas en un día y tipo de búsqueda, con el mensaje: `Search Console daily exposure limit reached; additional rows may not be available`.

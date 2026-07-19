@@ -76,8 +76,9 @@ def test_fetch_daily_paginates_each_day_and_latest_date():
     class S: 
         def searchanalytics(self): return SA()
     assert discover_latest_date(S(), "site") == "2026-07-18"
-    rows, omitted = fetch_daily(S(), "site", "2026-07-17", "2026-07-18")
-    assert len(rows) == 50000 and omitted == ["2026-07-17", "2026-07-18"]
+    rows, limit_days, counts = fetch_daily(S(), "site", "2026-07-17", "2026-07-18")
+    assert len(rows) == 50000 and limit_days == []
+    assert counts == {"2026-07-17": 25000, "2026-07-18": 25000}
     assert {c["startDate"] for c in calls if c["dimensions"] != ["date"]} == {"2026-07-17", "2026-07-18"}
 
 
@@ -131,3 +132,50 @@ def test_bing_methods_dates_ctr_endpoint_and_query_param(monkeypatch):
 def test_ai_feature_not_invented():
     assert explicit_ai_present({}, "") == ""
     assert explicit_ai_present({"ai_feature_present":"true"}, "") == "true"
+
+
+def test_gsc_25000_then_empty_no_warning_and_datastate_final():
+    calls=[]
+    class Q:
+        def __init__(self, rows): self.rows=rows
+        def execute(self): return {"rows": self.rows}
+    class SA:
+        def query(self, siteUrl, body):
+            calls.append(body.copy())
+            if body["startRow"] == 0: return Q([{"keys":[body["startDate"],"q","u","esp","mobile"]}] * 25000)
+            return Q([])
+    class S:
+        def searchanalytics(self): return SA()
+    rows, limit_days, counts = fetch_daily(S(), "site", "2026-07-18", "2026-07-18")
+    assert len(rows) == 25000
+    assert limit_days == []
+    assert counts["2026-07-18"] == 25000
+    assert all(c.get("dataState") == "final" for c in calls)
+
+
+def test_gsc_two_25000_pages_sets_limit_reached():
+    calls=[]
+    class Q:
+        def __init__(self, rows): self.rows=rows
+        def execute(self): return {"rows": self.rows}
+    class SA:
+        def query(self, siteUrl, body):
+            calls.append(body.copy())
+            if body["startRow"] in {0, 25000}: return Q([{"keys":[body["startDate"],"q","u","esp","mobile"]}] * 25000)
+            return Q([])
+    class S:
+        def searchanalytics(self): return SA()
+    rows, limit_days, counts = fetch_daily(S(), "site", "2026-07-18", "2026-07-18")
+    assert len(rows) == 50000
+    assert limit_days == ["2026-07-18"]
+    assert counts["2026-07-18"] == 50000
+    assert all(c.get("dataState") == "final" for c in calls)
+
+
+def test_bing_query_page_stats_does_not_invent_url():
+    from src.connectors.bing_webmaster import parse_query_page_stats
+    row = parse_query_page_stats({"Query":"returned", "Clicks":1, "Impressions":2}, "requested")
+    assert row["endpoint"] == "GetQueryPageStats"
+    assert row["requested_query"] == "requested"
+    assert row["returned_query_value"] == "returned"
+    assert row["url"] == ""

@@ -3,10 +3,10 @@ from datetime import datetime, timezone
 
 RESULT_COLUMNS = [
     "timestamp", "date", "row_type", "source", "engine", "surface", "endpoint", "scenario", "language", "language_source",
-    "query_id", "category", "configured_query", "query", "expected_language_path", "country", "country_format", "city", "device",
+    "query_id", "category", "configured_query", "query", "requested_query", "returned_query_value", "expected_language_path", "country", "country_format", "city", "device",
     "period", "average_position", "previous_average_position", "position_change", "exact_organic_position",
     "url", "title", "clicks", "impressions", "ctr", "ai_feature_present", "brand_mentioned",
-    "domain_cited", "citation_url", "status", "error",
+    "domain_cited", "citation_url", "data_limit_reached", "status", "error",
 ]
 QUERY_COLUMNS = ["query_id","category","language","scenario","search_country","search_city","latitude","longitude","device","engine","surface","query","expected_language_path","active"]
 ROW_TYPES = {"", "daily", "period_summary"}
@@ -27,6 +27,8 @@ class Result:
     category: str = ""
     configured_query: str = ""
     query: str = ""
+    requested_query: str = ""
+    returned_query_value: str = ""
     expected_language_path: str = ""
     country: str = ""
     country_format: str = ""
@@ -46,6 +48,7 @@ class Result:
     brand_mentioned: str = ""
     domain_cited: str = ""
     citation_url: str = ""
+    data_limit_reached: str = ""
     status: str = "ok"
     error: str = ""
 

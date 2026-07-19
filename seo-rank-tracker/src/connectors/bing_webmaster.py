@@ -50,7 +50,7 @@ def parse_rank_traffic(item):
 
 def parse_query_page_stats(item, requested_query):
     clicks = item.get("Clicks", ""); impressions = item.get("Impressions", "")
-    return Result(date=bing_date_to_iso(item.get("Date", "")), source="bing_webmaster", engine="bing", surface="bing_webmaster", endpoint="GetQueryPageStats", query=requested_query, url=item.get("Page", item.get("Url", "")), clicks=clicks, impressions=impressions, ctr=ctr(clicks, impressions, item.get("Ctr", item.get("CTR", ""))), average_position=item.get("AvgImpressionPosition", item.get("AveragePosition", item.get("Position", ""))), status="ok").to_row()
+    return Result(date=bing_date_to_iso(item.get("Date", "")), source="bing_webmaster", engine="bing", surface="bing_webmaster", endpoint="GetQueryPageStats", query=requested_query, requested_query=requested_query, returned_query_value=item.get("Query", ""), url=item.get("Page", item.get("Url", "")), clicks=clicks, impressions=impressions, ctr=ctr(clicks, impressions, item.get("Ctr", item.get("CTR", ""))), average_position=item.get("AvgImpressionPosition", item.get("AveragePosition", item.get("Position", ""))), status="ok").to_row()
 
 PARSERS = {"GetQueryStats": parse_query_stats, "GetPageStats": parse_page_stats, "GetRankAndTrafficStats": parse_rank_traffic}
 

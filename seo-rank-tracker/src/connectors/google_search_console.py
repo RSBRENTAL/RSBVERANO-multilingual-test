@@ -28,7 +28,7 @@ def previous_period(start, end):
 
 def discover_latest_date(service, site_url):
     end = date.today().isoformat(); start = (date.today() - timedelta(days=10)).isoformat()
-    body = {"startDate": start, "endDate": end, "dimensions": DATE_DIMENSIONS, "type": SEARCH_TYPE, "rowLimit": 10}
+    body = {"startDate": start, "endDate": end, "dimensions": DATE_DIMENSIONS, "type": SEARCH_TYPE, "dataState": "final", "rowLimit": 10}
     rows = service.searchanalytics().query(siteUrl=site_url, body=body).execute().get("rows", [])
     dates = [r.get("keys", [""])[0] for r in rows if r.get("keys")]
     return max(dates) if dates else ""
@@ -137,30 +137,35 @@ def authorize():
     return creds
 
 def fetch_day(service, site_url, day):
-    rows=[]; start_row=0; row_limit=25000
+    rows=[]; start_row=0; row_limit=25000; daily_exposure_limit=50000
     while True:
-        body={"startDate":day,"endDate":day,"dimensions":QUERY_DIMENSIONS,"type":SEARCH_TYPE,"rowLimit":row_limit,"startRow":start_row}
+        body={"startDate":day,"endDate":day,"dimensions":QUERY_DIMENSIONS,"type":SEARCH_TYPE,"dataState":"final","rowLimit":row_limit,"startRow":start_row}
         batch=service.searchanalytics().query(siteUrl=site_url, body=body).execute().get("rows", [])
-        if not batch: break
+        if not batch:
+            break
         rows.extend(batch)
-        if len(batch) < row_limit: break
+        if len(batch) < row_limit:
+            break
         start_row += row_limit
-    return rows
+        if len(rows) >= daily_exposure_limit:
+            break
+    return rows, len(rows) >= daily_exposure_limit
 
 def fetch_daily(service, site_url, start, end):
-    rows=[]; omitted=[]
+    rows=[]; limit_days=[]; counts={}
     for day in each_day(start, end):
-        day_rows = fetch_day(service, site_url, day)
-        if len(day_rows) and len(day_rows) % 25000 == 0:
-            omitted.append(day)
+        day_rows, limit_reached = fetch_day(service, site_url, day)
+        counts[day] = len(day_rows)
+        if limit_reached:
+            limit_days.append(day)
         rows.extend(day_rows)
-    return rows, omitted
+    return rows, limit_days, counts
 
 def dry_run_rows(period, start, end):
     active = load_queries(include_inactive=False)
     missing = [name for name in ["GSC_PROPERTY", "GOOGLE_CLIENT_SECRET_FILE", "GOOGLE_TOKEN_FILE"] if not env(name)]
     return [Result(row_type="period_summary", source="google_search_console", engine="google", surface="search_console", period=period,
-                   status="dry_run", error=f"dry_run: would discover latest date then query daily type=web dimensions={QUERY_DIMENSIONS} from {start} to {end}; active_queries={len(active)}; missing_credentials={','.join(missing) or 'none'}").to_row()]
+                   status="dry_run", error=f"dry_run: would discover latest date then query daily type=web dataState=final dimensions={QUERY_DIMENSIONS} from {start} to {end}; active_queries={len(active)}; missing_credentials={','.join(missing) or 'none'}").to_row()]
 
 def run(dry_run=False, period="7d", start_date=None, end_date=None):
     if dry_run:
@@ -178,13 +183,13 @@ def run(dry_run=False, period="7d", start_date=None, end_date=None):
         start, end = period_range(period, start_date, end_date, latest)
         ps, pe = previous_period(start, end)
         configured = query_lookup(include_inactive=False)
-        current_raw, omitted = fetch_daily(service, env("GSC_PROPERTY"), start, end)
-        previous_raw, _ = fetch_daily(service, env("GSC_PROPERTY"), ps, pe)
+        current_raw, limit_days, _counts = fetch_daily(service, env("GSC_PROPERTY"), start, end)
+        previous_raw, _previous_limit_days, _previous_counts = fetch_daily(service, env("GSC_PROPERTY"), ps, pe)
         daily = [enrich_daily(item, configured, period) for item in current_raw]
         prev_daily = [enrich_daily(item, configured, period) for item in previous_raw]
         summaries = aggregate_period(daily, period, prev_daily)
-        if omitted:
-            summaries.append(Result(row_type="period_summary", source="google_search_console", engine="google", surface="search_console", status="warning", error="Potential row limit reached for days: " + ",".join(omitted)).to_row())
+        if limit_days:
+            summaries.append(Result(row_type="period_summary", source="google_search_console", engine="google", surface="search_console", data_limit_reached="true", status="warning", error="Search Console daily exposure limit reached; additional rows may not be available: " + ",".join(limit_days)).to_row())
         return daily + summaries or [Result(source="google_search_console", engine="google", surface="search_console", status="no_data", error="No disponible").to_row()]
     except HttpError as exc:
         text = str(exc); msg = "No disponible: cuota agotada" if "quota" in text.lower() else ("No disponible: propiedad sin permisos" if "403" in text else f"No disponible: error Google API: {exc}")

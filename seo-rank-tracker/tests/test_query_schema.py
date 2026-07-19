@@ -28,3 +28,11 @@ def test_active_query_index_excludes_inactive_and_detects_duplicates(monkeypatch
     assert len(config.query_lookup(include_inactive=False)) == 1
     rows[1]["active"] = "true"
     with pytest.raises(ValueError): config.query_lookup(include_inactive=False)
+
+
+def test_custom_period_validation_no_connection():
+    from src.main import main
+    with pytest.raises(SystemExit):
+        main(["all", "--period", "custom", "--dry-run"])
+    with pytest.raises(SystemExit):
+        main(["all", "--period", "custom", "--start-date", "2026-07-20", "--end-date", "2026-07-19", "--dry-run"])

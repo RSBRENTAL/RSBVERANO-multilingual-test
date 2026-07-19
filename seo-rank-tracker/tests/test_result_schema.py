@@ -32,3 +32,10 @@ def test_report_generation_html_filters_and_sections():
 def test_generated_reports_are_ignored_by_git():
     ignored = subprocess.run(["git", "check-ignore", "seo-rank-tracker/reports/latest-report.csv"], cwd=Path(__file__).resolve().parents[2], text=True, capture_output=True)
     assert ignored.returncode == 0
+
+
+def test_result_schema_new_limit_and_bing_fields():
+    row = Result(requested_query="requested", returned_query_value="returned", data_limit_reached="true").to_row()
+    assert row["requested_query"] == "requested"
+    assert row["returned_query_value"] == "returned"
+    assert row["data_limit_reached"] == "true"

@@ -1,4 +1,5 @@
 import argparse
+from datetime import date
 from .connectors import google_search_console, bing_webmaster, google_ai_import
 from .reports.export_csv import export as export_csv
 from .reports.export_html import export as export_html
@@ -46,8 +47,23 @@ def build_parser():
     parser.add_argument("--bing-detailed", action="store_true", help="Run detailed Bing GetQueryPageStats for each unique active query")
     return parser
 
+def validate_dates(args, parser):
+    if args.period == "custom" and (not args.start_date or not args.end_date):
+        parser.error("--period custom requires --start-date and --end-date in YYYY-MM-DD format")
+    for attr in ["start_date", "end_date"]:
+        value = getattr(args, attr)
+        if value:
+            try:
+                date.fromisoformat(value)
+            except ValueError:
+                parser.error(f"--{attr.replace('_','-')} must use YYYY-MM-DD format")
+    if args.start_date and args.end_date and date.fromisoformat(args.start_date) > date.fromisoformat(args.end_date):
+        parser.error("--start-date must not be later than --end-date")
+
 def main(argv=None):
-    args = build_parser().parse_args(argv)
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    validate_dates(args, parser)
     rows=[]
     if args.command == "google": rows = run_google(args)
     elif args.command == "bing": rows = run_bing(args)
