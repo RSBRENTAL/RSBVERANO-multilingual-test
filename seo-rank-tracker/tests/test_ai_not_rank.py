@@ -130,10 +130,10 @@ def test_bing_methods_dates_ctr_endpoint_and_query_param(monkeypatch):
 
 
 def test_ai_feature_not_invented():
-    assert explicit_ai_present({}, "") == ""
-    assert explicit_ai_present({}, "generative ai_overview ai mode") == ""
-    assert explicit_ai_present({"ai_feature_present":"true"}, "") == "true"
-    assert explicit_ai_present({"report_type":"ai_overview"}, "") == "true"
+    assert explicit_ai_present({}) == ""
+    assert explicit_ai_present({}) == ""
+    assert explicit_ai_present({"ai_feature_present":"true"}) == "true"
+    assert explicit_ai_present({"report_type":"ai_overview"}) == "true"
 
 
 def test_gsc_25000_then_empty_no_warning_and_datastate_final():
@@ -213,3 +213,90 @@ def test_current_previous_limit_warning_flags_and_comparison_reliability():
     assert current_warning["current_period_data_limit_reached"] == "true" and current_warning["data_limit_reached"] == "true"
     assert previous_warning["previous_period_data_limit_reached"] == "true" and previous_warning["comparison_reliable"] == "false"
     assert both_warning["current_period_data_limit_reached"] == "true" and both_warning["previous_period_data_limit_reached"] == "true"
+
+
+def _sample_raw(day, query="q"):
+    return [{"keys":[day, query, "https://rentalscooterbarcelona.com/", "esp", "mobile"], "position": 2 if day >= "2026-07-12" else 5, "clicks": 1, "impressions": 10, "ctr": 0.1}]
+
+
+def _run_with_limits(monkeypatch, current_limits, previous_limits):
+    import sys, types
+    import src.connectors.google_search_console as gsc
+    monkeypatch.setenv("GSC_PROPERTY", "site")
+    monkeypatch.setenv("GOOGLE_CLIENT_SECRET_FILE", "secret")
+    monkeypatch.setenv("GOOGLE_TOKEN_FILE", "token")
+    monkeypatch.setattr(gsc, "authorize", lambda: object())
+    monkeypatch.setattr(gsc, "discover_latest_date", lambda service, site_url: "2026-07-18")
+    monkeypatch.setattr(gsc, "query_lookup", lambda include_inactive=False: {})
+    def fake_fetch_daily(service, site_url, start, end):
+        previous = end < "2026-07-12"
+        limits = previous_limits if previous else current_limits
+        rows = _sample_raw(end)
+        return rows, limits, {end: 50000 if limits else 1}
+    monkeypatch.setattr(gsc, "fetch_daily", fake_fetch_daily)
+    sys.modules['googleapiclient.discovery'] = types.SimpleNamespace(build=lambda *a, **k: object())
+    sys.modules['googleapiclient.errors'] = types.SimpleNamespace(HttpError=Exception)
+    return gsc.run(period="7d")
+
+
+def _summaries(rows):
+    return [r for r in rows if r["row_type"] == "period_summary" and r["status"] == "ok"]
+
+
+def _warnings(rows):
+    return [r for r in rows if r["status"] == "warning"]
+
+
+def test_run_current_limit_only(monkeypatch):
+    rows = _run_with_limits(monkeypatch, ["2026-07-18"], [])
+    warnings = _warnings(rows); summary = _summaries(rows)[0]
+    assert [w["limit_period"] for w in warnings] == ["current"]
+    assert summary["current_period_data_limit_reached"] == "true"
+    assert summary["previous_period_data_limit_reached"] == ""
+    assert summary["current_period_limit_days"] == "2026-07-18"
+    assert summary["comparison_reliable"] == "false"
+    assert summary["position_change"] == ""
+
+
+def test_run_previous_limit_only(monkeypatch):
+    rows = _run_with_limits(monkeypatch, [], ["2026-07-11"])
+    warnings = _warnings(rows); summary = _summaries(rows)[0]
+    assert [w["limit_period"] for w in warnings] == ["previous"]
+    assert summary["previous_period_data_limit_reached"] == "true"
+    assert summary["current_period_data_limit_reached"] == ""
+    assert summary["previous_period_limit_days"] == "2026-07-11"
+    assert summary["comparison_reliable"] == "false"
+    assert summary["position_change"] == ""
+
+
+def test_run_both_limits(monkeypatch):
+    rows = _run_with_limits(monkeypatch, ["2026-07-18"], ["2026-07-11"])
+    warnings = _warnings(rows); summary = _summaries(rows)[0]
+    assert len(warnings) == 2
+    assert {w["limit_period"] for w in warnings} == {"current", "previous"}
+    current = [w for w in warnings if w["limit_period"] == "current"][0]
+    previous = [w for w in warnings if w["limit_period"] == "previous"][0]
+    assert current != previous
+    assert current["current_period_limit_days"] == "2026-07-18" and current["previous_period_limit_days"] == ""
+    assert previous["previous_period_limit_days"] == "2026-07-11" and previous["current_period_limit_days"] == ""
+    assert summary["current_period_data_limit_reached"] == "true" and summary["previous_period_data_limit_reached"] == "true"
+    assert summary["comparison_reliable"] == "false" and summary["position_change"] == ""
+
+
+def test_run_no_limits(monkeypatch):
+    rows = _run_with_limits(monkeypatch, [], [])
+    assert _warnings(rows) == []
+    summary = _summaries(rows)[0]
+    assert summary["comparison_reliable"] == "true"
+    assert summary["position_change"] == "-3.0"
+
+
+def test_ai_feature_explicit_values_only():
+    assert explicit_ai_present({"ai_feature_present":"true"}) == "true"
+    assert explicit_ai_present({"ai_feature_present":"1"}) == "true"
+    assert explicit_ai_present({"ai_feature_present":"sí"}) == "true"
+    assert explicit_ai_present({"ai_feature_present":"false"}) == "false"
+    assert explicit_ai_present({"ai_feature_present":"0"}) == "false"
+    assert explicit_ai_present({"ai_feature_present":"no"}) == "false"
+    assert explicit_ai_present({"ai_feature_present":"maybe"}) == ""
+    assert explicit_ai_present({"ai_feature_present":"enabled"}) == ""

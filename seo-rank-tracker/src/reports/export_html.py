@@ -3,7 +3,7 @@ from html import escape
 from ..models import RESULT_COLUMNS
 
 ROOT = Path(__file__).resolve().parents[2]
-FILTERS = ["source","language","query","category","scenario","country","city","device","url","period","status","row_type","endpoint","data_limit_reached","current_period_data_limit_reached","previous_period_data_limit_reached","comparison_reliable"]
+FILTERS = ["source","language","query","category","scenario","country","city","device","url","period","status","row_type","endpoint","data_limit_reached","current_period_data_limit_reached","previous_period_data_limit_reached","comparison_reliable","current_period_limit_days","previous_period_limit_days","limit_period"]
 SECTIONS = [
     ("Google Search Console", lambda r: r.get("source") == "google_search_console" and r.get("surface") == "search_console"),
     ("Bing Webmaster Tools", lambda r: r.get("source") == "bing_webmaster" and r.get("surface") == "bing_webmaster"),

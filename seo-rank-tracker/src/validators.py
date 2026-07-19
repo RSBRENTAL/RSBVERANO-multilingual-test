@@ -28,6 +28,15 @@ def validate_result_schema(rows):
             raise ValueError("Invalid language_source")
         if row.get("comparison_reliable") not in {"", "true", "false"}:
             raise ValueError("Invalid comparison_reliable")
+        if row.get("limit_period") not in {"", "current", "previous"}:
+            raise ValueError("Invalid limit_period")
+        for field in ["current_period_limit_days", "previous_period_limit_days"]:
+            value = row.get(field, "")
+            if value:
+                for day in value.split(","):
+                    parts = day.split("-")
+                    if len(parts) != 3 or len(parts[0]) != 4 or len(parts[1]) != 2 or len(parts[2]) != 2 or not "".join(parts).isdigit():
+                        raise ValueError(f"Invalid limited date in {field}")
         if row.get("row_type") not in {"", "daily", "period_summary"}:
             raise ValueError("Invalid row_type")
         if row.get("status") == "ok" and str(row.get("error", "")).startswith("dry-run"):

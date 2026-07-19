@@ -45,3 +45,21 @@ def test_html_indicators_for_warning_and_unreliable_comparison():
     from src.reports.export_html import indicator
     assert indicator(Result(status="warning").to_row()) == "warning"
     assert indicator(Result(comparison_reliable="false").to_row()) == "comparación no fiable"
+
+
+def test_html_new_limit_filters():
+    html_path = export_html([Result(row_type="period_summary", current_period_limit_days="2026-07-18", previous_period_limit_days="2026-07-11", limit_period="current", comparison_reliable="false").to_row()], "data/results/test-limit-filter.html")
+    html = html_path.read_text(encoding="utf-8")
+    assert "data-filter='current_period_limit_days'" in html
+    assert "data-filter='previous_period_limit_days'" in html
+    assert "data-filter='limit_period'" in html
+    html_path.unlink()
+
+
+def test_limited_date_validators():
+    assert validate_result_schema([Result(current_period_limit_days="2026-07-18,2026-07-19", limit_period="current", comparison_reliable="false").to_row()])
+    import pytest
+    with pytest.raises(ValueError):
+        validate_result_schema([Result(current_period_limit_days="18-07-2026").to_row()])
+    with pytest.raises(ValueError):
+        validate_result_schema([Result(limit_period="both").to_row()])
