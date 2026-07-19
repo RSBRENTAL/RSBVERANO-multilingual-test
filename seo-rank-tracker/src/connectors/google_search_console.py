@@ -28,7 +28,7 @@ def previous_period(start, end):
 
 def discover_latest_date(service, site_url):
     end = date.today().isoformat(); start = (date.today() - timedelta(days=10)).isoformat()
-    body = {"startDate": start, "endDate": end, "dimensions": DATE_DIMENSIONS, "type": SEARCH_TYPE, "dataState": "final", "rowLimit": 10}
+    body = {"startDate": start, "endDate": end, "dimensions": DATE_DIMENSIONS, "type": SEARCH_TYPE, "dataState": "final", "rowLimit": 25000}
     rows = service.searchanalytics().query(siteUrl=site_url, body=body).execute().get("rows", [])
     dates = [r.get("keys", [""])[0] for r in rows if r.get("keys")]
     return max(dates) if dates else ""
@@ -92,7 +92,7 @@ def enrich_daily(item, configured, period):
         device=device, period=period, average_position=item.get("position", ""), url=page, clicks=item.get("clicks", ""),
         impressions=item.get("impressions", ""), ctr=item.get("ctr", ""), status="ok").to_row()
 
-def aggregate_period(rows, period, previous_rows=None):
+def aggregate_period(rows, period, previous_rows=None, previous_limit_reached=False):
     def grouped(source_rows):
         groups = defaultdict(lambda: {"clicks":0.0,"impressions":0.0,"weighted":0.0,"sample":None})
         for r in source_rows:
@@ -112,7 +112,7 @@ def aggregate_period(rows, period, previous_rows=None):
         row = dict(sample); row.update({"row_type":"period_summary", "date":"", "period":period, "clicks":str(round(clicks,4)),
             "impressions":str(round(impressions,4)), "ctr":str(round(ctr,6)) if ctr != "" else "",
             "average_position":str(round(avg,4)) if avg != "" else "", "previous_average_position":str(round(prev_avg,4)) if prev_avg != "" else "",
-            "position_change":str(round(change,4)) if change != "" else ""})
+            "position_change": "" if previous_limit_reached else (str(round(change,4)) if change != "" else ""), "comparison_reliable": "false" if previous_limit_reached else ("true" if change != "" else "")})
         out.append(row)
     return out
 
@@ -184,13 +184,21 @@ def run(dry_run=False, period="7d", start_date=None, end_date=None):
         ps, pe = previous_period(start, end)
         configured = query_lookup(include_inactive=False)
         current_raw, limit_days, _counts = fetch_daily(service, env("GSC_PROPERTY"), start, end)
-        previous_raw, _previous_limit_days, _previous_counts = fetch_daily(service, env("GSC_PROPERTY"), ps, pe)
+        previous_raw, previous_limit_days, _previous_counts = fetch_daily(service, env("GSC_PROPERTY"), ps, pe)
         daily = [enrich_daily(item, configured, period) for item in current_raw]
         prev_daily = [enrich_daily(item, configured, period) for item in previous_raw]
-        summaries = aggregate_period(daily, period, prev_daily)
+        summaries = aggregate_period(daily, period, prev_daily, previous_limit_reached=bool(previous_limit_days))
+        warnings = []
         if limit_days:
-            summaries.append(Result(row_type="period_summary", source="google_search_console", engine="google", surface="search_console", data_limit_reached="true", status="warning", error="Search Console daily exposure limit reached; additional rows may not be available: " + ",".join(limit_days)).to_row())
-        return daily + summaries or [Result(source="google_search_console", engine="google", surface="search_console", status="no_data", error="No disponible").to_row()]
+            warnings.append(Result(row_type="period_summary", source="google_search_console", engine="google", surface="search_console", data_limit_reached="true", current_period_data_limit_reached="true", status="warning", error="Current Search Console period reached the daily exposure limit; additional rows may not be available: " + ",".join(limit_days)).to_row())
+        if previous_limit_days:
+            warnings.append(Result(row_type="period_summary", source="google_search_console", engine="google", surface="search_console", data_limit_reached="true", previous_period_data_limit_reached="true", comparison_reliable="false", status="warning", error="Previous Search Console period reached the daily exposure limit; comparison may be incomplete: " + ",".join(previous_limit_days)).to_row())
+        if limit_days and previous_limit_days:
+            for row in warnings:
+                row["current_period_data_limit_reached"] = "true" if limit_days else row.get("current_period_data_limit_reached", "")
+                row["previous_period_data_limit_reached"] = "true" if previous_limit_days else row.get("previous_period_data_limit_reached", "")
+                row["data_limit_reached"] = "true"
+        return daily + summaries + warnings or [Result(source="google_search_console", engine="google", surface="search_console", status="no_data", error="No disponible").to_row()]
     except HttpError as exc:
         text = str(exc); msg = "No disponible: cuota agotada" if "quota" in text.lower() else ("No disponible: propiedad sin permisos" if "403" in text else f"No disponible: error Google API: {exc}")
         return [Result(source="google_search_console", engine="google", surface="search_console", status="error", error=msg).to_row()]

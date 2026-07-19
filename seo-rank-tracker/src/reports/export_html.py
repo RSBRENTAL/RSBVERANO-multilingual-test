@@ -3,7 +3,7 @@ from html import escape
 from ..models import RESULT_COLUMNS
 
 ROOT = Path(__file__).resolve().parents[2]
-FILTERS = ["source","language","query","category","scenario","country","city","device","url","period","status","row_type","endpoint"]
+FILTERS = ["source","language","query","category","scenario","country","city","device","url","period","status","row_type","endpoint","data_limit_reached","current_period_data_limit_reached","previous_period_data_limit_reached","comparison_reliable"]
 SECTIONS = [
     ("Google Search Console", lambda r: r.get("source") == "google_search_console" and r.get("surface") == "search_console"),
     ("Bing Webmaster Tools", lambda r: r.get("source") == "bing_webmaster" and r.get("surface") == "bing_webmaster"),
@@ -13,6 +13,8 @@ SECTIONS = [
 def indicator(row):
     if row.get("status") == "dry_run": return "dry-run"
     if row.get("status") == "error": return "error"
+    if row.get("status") == "warning": return "warning"
+    if row.get("comparison_reliable") == "false": return "comparación no fiable"
     change = row.get("position_change")
     if change in (None, ""): return "datos insuficientes"
     try: value = float(change)
@@ -23,7 +25,7 @@ def indicator(row):
 
 def export(rows, relative_path="reports/latest-report.html"):
     path = ROOT / relative_path; path.parent.mkdir(parents=True, exist_ok=True)
-    body = ["<html><head><meta charset='utf-8'><title>SEO Rank Tracker</title>", "<style>.mejora{color:green}.empeoramiento{color:#b00}.error{color:#b00;font-weight:bold}.dry-run{color:#06c}.insuficiente{color:#777}</style></head><body>", "<h1>SEO Rank Tracker</h1>", "<p>Datos no disponibles se muestran como No disponible. La posición media no es posición orgánica exacta.</p>"]
+    body = ["<html><head><meta charset='utf-8'><title>SEO Rank Tracker</title>", "<style>.mejora{color:green}.empeoramiento{color:#b00}.error{color:#b00;font-weight:bold}.dry-run{color:#06c}.warning{color:#c70;font-weight:bold}.comparación{color:#c70}.insuficiente{color:#777}</style></head><body>", "<h1>SEO Rank Tracker</h1>", "<p>Datos no disponibles se muestran como No disponible. La posición media no es posición orgánica exacta.</p>"]
     body.append("<div id='filters'>" + "".join(f"<label>{escape(f)} <input data-filter='{escape(f)}' oninput='filterRows()'></label> " for f in FILTERS) + "</div>")
     for title, predicate in SECTIONS:
         body.append(f"<h2>{escape(title)}</h2><table border='1'><thead><tr><th>indicator</th>" + "".join(f"<th>{escape(c)}</th>" for c in RESULT_COLUMNS) + "</tr></thead><tbody>")

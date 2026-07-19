@@ -13,8 +13,6 @@ def explicit_ai_present(item, unknown):
     report_type = str(item.get("report_type", "")).strip().casefold()
     if report_type in {"google_generative_ai", "generative_ai", "ai_overview", "ai_mode"}:
         return "true"
-    if "generative" in unknown or "ai_overview" in unknown or "ai mode" in unknown:
-        return "true"
     return ""
 
 def run(dry_run=False):

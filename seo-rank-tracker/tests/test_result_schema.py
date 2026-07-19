@@ -39,3 +39,9 @@ def test_result_schema_new_limit_and_bing_fields():
     assert row["requested_query"] == "requested"
     assert row["returned_query_value"] == "returned"
     assert row["data_limit_reached"] == "true"
+
+
+def test_html_indicators_for_warning_and_unreliable_comparison():
+    from src.reports.export_html import indicator
+    assert indicator(Result(status="warning").to_row()) == "warning"
+    assert indicator(Result(comparison_reliable="false").to_row()) == "comparación no fiable"

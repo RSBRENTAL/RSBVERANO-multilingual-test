@@ -131,7 +131,9 @@ def test_bing_methods_dates_ctr_endpoint_and_query_param(monkeypatch):
 
 def test_ai_feature_not_invented():
     assert explicit_ai_present({}, "") == ""
+    assert explicit_ai_present({}, "generative ai_overview ai mode") == ""
     assert explicit_ai_present({"ai_feature_present":"true"}, "") == "true"
+    assert explicit_ai_present({"report_type":"ai_overview"}, "") == "true"
 
 
 def test_gsc_25000_then_empty_no_warning_and_datastate_final():
@@ -179,3 +181,35 @@ def test_bing_query_page_stats_does_not_invent_url():
     assert row["requested_query"] == "requested"
     assert row["returned_query_value"] == "returned"
     assert row["url"] == ""
+
+
+def test_discover_latest_date_uses_large_row_limit_for_11_ascending_dates():
+    calls=[]
+    class Q:
+        def execute(self):
+            return {"rows": [{"keys":[f"2026-07-{day:02d}"]} for day in range(9, 20)]}
+    class SA:
+        def query(self, siteUrl, body):
+            calls.append(body.copy()); return Q()
+    class S:
+        def searchanalytics(self): return SA()
+    assert discover_latest_date(S(), "site") == "2026-07-19"
+    assert calls[0]["rowLimit"] == 25000
+    assert calls[0]["dimensions"] == ["date"]
+    assert calls[0]["type"] == "web"
+    assert calls[0]["dataState"] == "final"
+
+
+def test_current_previous_limit_warning_flags_and_comparison_reliability():
+    current = [Result(row_type="daily", query="q", url="u", country="esp", device="mobile", clicks="1", impressions="10", average_position="2").to_row()]
+    previous = [Result(row_type="daily", query="q", url="u", country="esp", device="mobile", clicks="1", impressions="10", average_position="5").to_row()]
+    reliable = aggregate_period(current, "7d", previous, previous_limit_reached=False)[0]
+    unreliable = aggregate_period(current, "7d", previous, previous_limit_reached=True)[0]
+    assert reliable["position_change"] == "-3.0" and reliable["comparison_reliable"] == "true"
+    assert unreliable["position_change"] == "" and unreliable["comparison_reliable"] == "false"
+    current_warning = Result(row_type="period_summary", status="warning", data_limit_reached="true", current_period_data_limit_reached="true", error="Current Search Console period reached the daily exposure limit; additional rows may not be available: 2026-07-18").to_row()
+    previous_warning = Result(row_type="period_summary", status="warning", data_limit_reached="true", previous_period_data_limit_reached="true", comparison_reliable="false", error="Previous Search Console period reached the daily exposure limit; comparison may be incomplete: 2026-07-11").to_row()
+    both_warning = Result(row_type="period_summary", status="warning", data_limit_reached="true", current_period_data_limit_reached="true", previous_period_data_limit_reached="true", comparison_reliable="false").to_row()
+    assert current_warning["current_period_data_limit_reached"] == "true" and current_warning["data_limit_reached"] == "true"
+    assert previous_warning["previous_period_data_limit_reached"] == "true" and previous_warning["comparison_reliable"] == "false"
+    assert both_warning["current_period_data_limit_reached"] == "true" and both_warning["previous_period_data_limit_reached"] == "true"

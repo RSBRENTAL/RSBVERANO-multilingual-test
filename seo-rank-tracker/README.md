@@ -97,3 +97,5 @@ Bing `GetQueryPageStats` conserva `requested_query` y `returned_query_value`. So
 ## Límite diario Search Console
 
 La herramienta pagina Search Console hasta recibir menos de 25.000 filas o respuesta vacía. Solo marca `data_limit_reached=true` y `status=warning` cuando se alcanzan 50.000 filas en un día y tipo de búsqueda, con el mensaje: `Search Console daily exposure limit reached; additional rows may not be available`.
+
+Cuando el periodo actual o anterior alcance ese límite, se generan filas de advertencia separadas con `current_period_data_limit_reached`, `previous_period_data_limit_reached` y `data_limit_reached`. Si el límite afecta al periodo anterior, `comparison_reliable=false` y el cambio de posición no se presenta como comparación fiable.

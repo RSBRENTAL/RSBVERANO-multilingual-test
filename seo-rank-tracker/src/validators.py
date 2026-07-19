@@ -26,6 +26,8 @@ def validate_result_schema(rows):
             raise ValueError("AI data cannot be organic position")
         if row.get("language_source") not in VALID_LANGUAGE_SOURCES:
             raise ValueError("Invalid language_source")
+        if row.get("comparison_reliable") not in {"", "true", "false"}:
+            raise ValueError("Invalid comparison_reliable")
         if row.get("row_type") not in {"", "daily", "period_summary"}:
             raise ValueError("Invalid row_type")
         if row.get("status") == "ok" and str(row.get("error", "")).startswith("dry-run"):
