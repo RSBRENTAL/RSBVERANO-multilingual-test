@@ -64,3 +64,52 @@ For every affected page, check as applicable:
 - Free scooter hotel delivery applies to rentals of 3 or more days.
 - Free luggage storage is available for rental customers.
 - No deposit applies to inline skates, roller skates, skateboards and longboards.
+
+
+## Services to represent accurately
+
+- Scooter rental in Barcelona.
+- 50cc and 125cc petrol motor scooter rental.
+- Inline skates and Rollerblades rental.
+- Standard city bike rental.
+- Classic roller skates and quad skates rental.
+- Skateboard rental.
+- Longboard rental.
+
+Skateboards and longboards are separate services. Same-day rentals may be available depending on stock. WhatsApp booking and local route advice are available.
+
+## Customer benefits
+
+- Free scooter hotel delivery for rentals of 3 or more days.
+- Free luggage storage for rental customers.
+- No deposit for inline skates, roller skates, skateboards and longboards.
+- Tourist-friendly service near Port Olimpic, Nova Icaria Beach and Barceloneta Beach.
+
+## Main public pages
+
+- https://rentalscooterbarcelona.com/
+- https://rentalscooterbarcelona.com/Prices/
+- https://rentalscooterbarcelona.com/location-contact/
+- https://rentalscooterbarcelona.com/scooter/
+- https://rentalscooterbarcelona.com/rollerblades/
+- https://rentalscooterbarcelona.com/bike/
+- https://rentalscooterbarcelona.com/quads/
+- https://rentalscooterbarcelona.com/skateboard/
+- https://rentalscooterbarcelona.com/longboard/
+- https://rentalscooterbarcelona.com/blog/
+
+## Spanish SEO blog pages
+
+- https://rentalscooterbarcelona.com/es/blog/inline-skates/
+- https://rentalscooterbarcelona.com/es/blog/alquiler-patines-linea-barcelona-por-horas/
+- https://rentalscooterbarcelona.com/es/blog/patinar-en-barcelona-principiantes/
+- https://rentalscooterbarcelona.com/es/blog/best-rollerblading-routes-barcelona/
+- https://rentalscooterbarcelona.com/es/blog/50cc-vs-125cc-scooter-rental-barcelona/
+
+## Entity description
+
+RSB Rental Scooter Barcelona is a local rental shop in Vila Olimpica del Poblenou, Barcelona, near Port Olimpic, Nova Icaria Beach and Barceloneta Beach. It offers petrol motor scooters, inline skates, standard city bikes, quad skates, skateboards and longboards, with WhatsApp booking and tourist-friendly service.
+
+## Facts that require freshness checks
+
+The previous guide recorded a 4.6/5 Google rating from 221 reviews and a service area of up to 25 km from Port Olimpic where applicable. Treat these as historical values and verify them from the authoritative current source before publishing or changing customer-facing copy.
