@@ -158,6 +158,7 @@ RewriteRule ^(.+)\.html$ $1.html [L]
   ExpiresByType image/webp "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 
 <IfModule mod_headers.c>
@@ -197,3 +198,4 @@ RewriteRule ^(.+)\.html$ $1.html [L]
 # --------------------------------------------
 AddType application/manifest+json .webmanifest
 AddType text/markdown .md
+AddType font/woff2 .woff2
