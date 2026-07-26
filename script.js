@@ -79,8 +79,17 @@
     if (!btn) return;
     btn.addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
-      $$('.faq-item.open').forEach((i) => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+      $$('.faq-item.open').forEach((i) => {
+        i.classList.remove('open');
+        const openButton = $('.faq-q', i);
+        if (openButton) openButton.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      } else {
+        btn.setAttribute('aria-expanded', 'false');
+      }
     });
   });
 
