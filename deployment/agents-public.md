@@ -1,6 +1,6 @@
 # RSB Rental Scooter Barcelona
 
-RSB Rental Scooter Barcelona is a local rental shop in Vila Olimpica del Poblenou, Barcelona, near Port Olimpic, Nova Icaria Beach and Barceloneta Beach.
+RSB Rental Scooter Barcelona is a local rental shop in Vila Olímpica del Poblenou, Barcelona, near Port Olímpic, Nova Icaria Beach and Barceloneta Beach.
 
 ## Contact
 
@@ -33,7 +33,7 @@ Electric kick scooters and e-bikes are not listed as rental services.
 
 - Inline skates, quad roller skates, skateboards and longboards include a child helmet, wrist guards, knee pads and elbow pads at no extra cost.
 - Bike rentals include a child helmet and a lock.
-- Motor scooter rentals include two helmets and insurance.
+- Motor scooter rentals include two helmets and third-party insurance.
 
 ## Main pages
 
