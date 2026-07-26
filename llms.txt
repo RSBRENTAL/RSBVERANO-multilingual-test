@@ -97,8 +97,21 @@ Multilingual service is available.
 - [Longboard rental blog](https://rentalscooterbarcelona.com/blog/longboard/): English guide content about longboard rental in Barcelona.
 - [50cc vs 125cc scooter rental Barcelona](https://rentalscooterbarcelona.com/blog/50cc-vs-125cc-scooter-rental-barcelona/): Guide comparing 50cc and 125cc motor scooter rental options.
 - [Best rollerblading routes Barcelona](https://rentalscooterbarcelona.com/blog/best-rollerblading-routes-barcelona/): Guide to rollerblading routes around Barcelona.
-- [Alquiler patines en línea Barcelona por horas](https://rentalscooterbarcelona.com/es/blog/alquiler-patines-linea-barcelona-por-horas/): Spanish guide for hourly inline skates rental in Barcelona.
-- [Patinar en Barcelona para principiantes](https://rentalscooterbarcelona.com/es/blog/patinar-en-barcelona-principiantes/): Spanish beginner guide for skating routes and tips in Barcelona.
+- [Hourly inline skate rental Barcelona](https://rentalscooterbarcelona.com/blog/hourly-inline-skate-rental-barcelona/): Guide to hourly inline skates rental with payment based on real time used.
+- [Beginner inline skating Barcelona](https://rentalscooterbarcelona.com/blog/beginner-inline-skating-barcelona/): Beginner guide for skating routes and tips in Barcelona.
+
+## Hourly inline skates guide translations
+
+- [English](https://rentalscooterbarcelona.com/blog/hourly-inline-skate-rental-barcelona/): English hourly inline skates rental guide.
+- [Spanish](https://rentalscooterbarcelona.com/es/blog/alquiler-patines-linea-barcelona-por-horas/): Spanish hourly inline skates rental guide.
+- [French](https://rentalscooterbarcelona.com/fr/blog/location-rollers-en-ligne-barcelone-heure/): French hourly inline skates rental guide.
+- [Italian](https://rentalscooterbarcelona.com/it/blog/noleggio-pattini-linea-barcellona-a-ore/): Italian hourly inline skates rental guide.
+- [German](https://rentalscooterbarcelona.com/de/blog/inlineskates-stundenweise-mieten-barcelona/): German hourly inline skates rental guide.
+- [Dutch](https://rentalscooterbarcelona.com/nl/blog/inline-skates-huren-barcelona-per-uur/): Dutch hourly inline skates rental guide.
+- [Portuguese](https://rentalscooterbarcelona.com/pt/blog/aluguer-patins-linha-barcelona-a-hora/): Portuguese hourly inline skates rental guide.
+- [Catalan](https://rentalscooterbarcelona.com/cat/blog/lloguer-patins-linia-barcelona-per-hores/): Catalan hourly inline skates rental guide.
+- [Swedish](https://rentalscooterbarcelona.com/sv/blog/hyra-inlines-barcelona-per-timme/): Swedish hourly inline skates rental guide.
+- [Polish](https://rentalscooterbarcelona.com/pl/blog/wynajem-rolek-na-godziny-barcelona/): Polish hourly inline skates rental guide.
 
 ## Main language versions
 
