@@ -1,6 +1,12 @@
 RewriteEngine On
 
 # --------------------------------------------
+# 0) Endpoint de horarios antiguo -> endpoint canonico
+# --------------------------------------------
+# Sin QSD ni query de destino, Apache conserva la query original.
+RewriteRule ^hours\.php$ /api/hours.php [R=301,L,NC]
+
+# --------------------------------------------
 # 0AA) Rutas inactivas retiradas: devolver 410 Gone
 # --------------------------------------------
 RewriteRule ^(inline-skate-classes|summer-camp-on-wheels-barcelona)/?$ - [G,L,NC]
@@ -126,8 +132,10 @@ RewriteRule ^(.+)\.html$ $1.html [L]
 # 3) Compatibilidad con Nominalia + Varnish
 # --------------------------------------------
 <IfModule mod_headers.c>
-  Header unset Pragma
-  Header unset Cache-Control
+  <FilesMatch "\.html$">
+    Header unset Pragma
+    Header unset Cache-Control
+  </FilesMatch>
 </IfModule>
 
 # --------------------------------------------
@@ -147,11 +155,16 @@ RewriteRule ^(.+)\.html$ $1.html [L]
 </IfModule>
 
 <IfModule mod_headers.c>
-  <FilesMatch "\.(html|php)$">
+  <FilesMatch "\.html$">
     Header always set Cache-Control "public, max-age=300, must-revalidate"
   </FilesMatch>
   <FilesMatch "^script\.js$">
     Header always set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "^hours\.php$">
+    Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header always set Pragma "no-cache"
+    Header always set Expires "0"
   </FilesMatch>
 </IfModule>
 
