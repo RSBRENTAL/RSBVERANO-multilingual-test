@@ -3,6 +3,8 @@
 <html lang="nl">
 <head>
 <meta charset="utf-8"/>
+<link href="/stylesHomeCritical.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="/fonts/great-vibes-rsb-subset.woff2" rel="preload" type="font/woff2"/>
     <link rel="manifest" href="/site.webmanifest"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Scooterverhuur, inline skates en fietsen in Barcelona | RSB</title>
@@ -53,11 +55,12 @@
 <link href="https://rentalscooterbarcelona.com/apple-touch-icon.png" rel="apple-touch-icon"/>
 <link crossorigin="" href="https://www.googletagmanager.com" rel="preconnect"/>
 <link href="https://www.googletagmanager.com" rel="dns-prefetch"/>
-<link as="image" fetchpriority="high" href="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-1600-v1.webp" imagesizes="100vw" imagesrcset="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-480-v1.webp 480w, https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-800-v1.webp 800w, https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-1600-v1.webp 1600w" rel="preload"/>
+<link as="image" fetchpriority="high" href="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-1600-v1.webp" imagesizes="100vw" imagesrcset="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-480-v1.webp 480w, /images/rsb-barcelona-rental-hero-group-beach-720-v2.webp 720w, https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-800-v1.webp 800w, https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-1600-v1.webp 1600w" rel="preload"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://rentalscooterbarcelona.com/nl/stylesHome.css" rel="stylesheet"/>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
+<link as="style" href="https://rentalscooterbarcelona.com/nl/stylesHome.css" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://rentalscooterbarcelona.com/nl/stylesHome.css" rel="stylesheet"/></noscript>
 <script data-rsb-dynamic-hours="" type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -423,12 +426,26 @@
   ]
 }
 </script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-S7SMLHCNGK"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-S7SMLHCNGK');
+    (() => {
+      let loaded = false;
+      const loadAnalytics = () => {
+        if (loaded) return;
+        loaded = true;
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-S7SMLHCNGK';
+        document.head.appendChild(script);
+      };
+      ['pointerdown', 'touchstart', 'keydown'].forEach((eventName) => {
+        window.addEventListener(eventName, loadAnalytics, { once: true, passive: true });
+      });
+      window.addEventListener('load', loadAnalytics, { once: true });
+    })();
   </script>
 <meta content="3_Dfcq2jy9ccTlZt6JQm9ltOZ7UvN2QvG1PhZajyPy8" name="google-site-verification"/>
 </head>
@@ -517,7 +534,7 @@
 <section aria-labelledby="home-business-facts-title-nl" class="hero business-facts" id="hero">
 <div class="hero-bg">
 <div class="layer hero-layer-a">
-<img alt="Groep die geniet van scooterverhuur, inline skates en fietsen bij het strand van Barceloneta en Vila Olímpica in Barcelona" class="zoom" decoding="async" fetchpriority="high" height="900" sizes="100vw" src="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-1600-v1.webp" srcset="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-480-v1.webp 480w, https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-800-v1.webp 800w, https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-1600-v1.webp 1600w" width="1600"/>
+<img alt="Groep die geniet van scooterverhuur, inline skates en fietsen bij het strand van Barceloneta en Vila Olímpica in Barcelona" class="zoom" decoding="async" fetchpriority="high" height="900" sizes="100vw" src="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-1600-v1.webp" srcset="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-480-v1.webp 480w, /images/rsb-barcelona-rental-hero-group-beach-720-v2.webp 720w, https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-800-v1.webp 800w, https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-1600-v1.webp 1600w" width="1600"/>
 </div>
 <div class="hero-overlay-1"></div>
 <div class="hero-overlay-2"></div>
