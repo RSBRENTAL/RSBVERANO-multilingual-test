@@ -34,6 +34,9 @@ RewriteRule ^(.*)$ https://rentalscooterbarcelona.com/$1? [R=301,L]
 # --------------------------------------------
 # 0C) Redirecciones de index.html e index numerados a URL canónica limpia
 # --------------------------------------------
+# Evita la cadena index3.html -> /cat/map/ -> /cat/location-contact/.
+# Sin QSD ni query de destino, Apache conserva la query original.
+RewriteRule ^cat/map/index3\.html$ https://rentalscooterbarcelona.com/cat/location-contact/ [R=301,L,NC]
 RewriteRule ^index\.html$ https://rentalscooterbarcelona.com/ [R=301,L]
 RewriteRule ^(es|fr|it|de|nl|pt|cat|sv|pl)/index\.html$ https://rentalscooterbarcelona.com/$1/ [R=301,L]
 RewriteRule ^(.+)/index\.html$ https://rentalscooterbarcelona.com/$1/ [R=301,L]
@@ -155,6 +158,7 @@ RewriteRule ^(.+)\.html$ $1.html [L]
   ExpiresByType image/webp "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 
 <IfModule mod_headers.c>
@@ -182,7 +186,7 @@ RewriteRule ^(.+)\.html$ $1.html [L]
   Header always set X-Frame-Options "DENY"
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
-  Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; frame-src 'self' https://www.google.com https://maps.google.com https://www.google.es; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://region1.analytics.google.com https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com; frame-ancestors 'none';"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; frame-src 'self' https://www.google.com https://maps.google.com https://www.google.es; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://region1.analytics.google.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://www.google.com https://www.google.es; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me https://api.whatsapp.com; frame-ancestors 'none';"
   Header always set Strict-Transport-Security "max-age=31536000"
   <FilesMatch "^(yandex_.*\.html|BingSiteAuth\.xml|apple-domain-verification\.txt)$">
     Header always set X-Robots-Tag "noindex, nofollow"
@@ -194,3 +198,4 @@ RewriteRule ^(.+)\.html$ $1.html [L]
 # --------------------------------------------
 AddType application/manifest+json .webmanifest
 AddType text/markdown .md
+AddType font/woff2 .woff2

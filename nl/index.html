@@ -3,6 +3,8 @@
 <html lang="nl">
 <head>
 <meta charset="utf-8"/>
+<link href="/stylesHomeCritical.css" rel="stylesheet"/>
+<link as="font" crossorigin="" href="/fonts/great-vibes-rsb-subset.woff2" rel="preload" type="font/woff2"/>
     <link rel="manifest" href="/site.webmanifest"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Scooterverhuur, inline skates en fietsen in Barcelona | RSB</title>
@@ -53,11 +55,12 @@
 <link href="https://rentalscooterbarcelona.com/apple-touch-icon.png" rel="apple-touch-icon"/>
 <link crossorigin="" href="https://www.googletagmanager.com" rel="preconnect"/>
 <link href="https://www.googletagmanager.com" rel="dns-prefetch"/>
-<link as="image" fetchpriority="high" href="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-1600-v1.webp" imagesizes="100vw" imagesrcset="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-480-v1.webp 480w, https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-800-v1.webp 800w, https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-1600-v1.webp 1600w" rel="preload"/>
+<link as="image" fetchpriority="high" href="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-1600-v1.webp" imagesizes="100vw" imagesrcset="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-480-v1.webp 480w, /images/rsb-barcelona-rental-hero-group-beach-720-v2.webp 720w, https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-800-v1.webp 800w, https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-1600-v1.webp 1600w" rel="preload"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://rentalscooterbarcelona.com/nl/stylesHome.css" rel="stylesheet"/>
+<link as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
+<link as="style" href="https://rentalscooterbarcelona.com/nl/stylesHome.css" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://rentalscooterbarcelona.com/nl/stylesHome.css" rel="stylesheet"/></noscript>
 <script data-rsb-dynamic-hours="" type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -202,16 +205,6 @@
         {
           "@type": "Place",
           "name": "Barceloneta Beach"
-        },
-        {
-          "@type": "GeoCircle",
-          "name": "25 km radius from Port Olímpic, Barcelona",
-          "geoMidpoint": {
-            "@type": "GeoCoordinates",
-            "latitude": 41.3902471,
-            "longitude": 2.1986242
-          },
-          "geoRadius": "25000"
         }
       ],
       "openingHoursSpecification": [
@@ -433,12 +426,26 @@
   ]
 }
 </script>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-S7SMLHCNGK"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-S7SMLHCNGK');
+    (() => {
+      let loaded = false;
+      const loadAnalytics = () => {
+        if (loaded) return;
+        loaded = true;
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-S7SMLHCNGK';
+        document.head.appendChild(script);
+      };
+      ['pointerdown', 'touchstart', 'keydown'].forEach((eventName) => {
+        window.addEventListener(eventName, loadAnalytics, { once: true, passive: true });
+      });
+      window.addEventListener('load', loadAnalytics, { once: true });
+    })();
   </script>
 <meta content="3_Dfcq2jy9ccTlZt6JQm9ltOZ7UvN2QvG1PhZajyPy8" name="google-site-verification"/>
 </head>
@@ -527,7 +534,7 @@
 <section aria-labelledby="home-business-facts-title-nl" class="hero business-facts" id="hero">
 <div class="hero-bg">
 <div class="layer hero-layer-a">
-<img alt="Groep die geniet van scooterverhuur, inline skates en fietsen bij het strand van Barceloneta en Vila Olímpica in Barcelona" class="zoom" decoding="async" fetchpriority="high" height="900" sizes="100vw" src="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-1600-v1.webp" srcset="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-480-v1.webp 480w, https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-800-v1.webp 800w, https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-1600-v1.webp 1600w" width="1600"/>
+<img alt="Groep die geniet van scooterverhuur, inline skates en fietsen bij het strand van Barceloneta en Vila Olímpica in Barcelona" class="zoom" decoding="async" fetchpriority="high" height="900" sizes="100vw" src="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-1600-v1.webp" srcset="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-480-v1.webp 480w, /images/rsb-barcelona-rental-hero-group-beach-720-v2.webp 720w, https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-800-v1.webp 800w, https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-hero-group-beach-1600-v1.webp 1600w" width="1600"/>
 </div>
 <div class="hero-overlay-1"></div>
 <div class="hero-overlay-2"></div>
@@ -540,7 +547,7 @@
 </div>
 <h1 aria-label="Scooterverhuur en inline skates in Barcelona" class="home-hero-title" id="home-business-facts-title-nl">Scooter en inline skates huren in Barcelona</h1>
 <p class="lead">RSB Rental Scooter Barcelona ligt in Vila Olímpica del Poblenou, op slechts 100 meter van het strand van Nova Icaria en direct tegenover Port Olímpic. We liggen op slechts 5 minuten lopen van het strand van Barceloneta. Huur <a href="https://rentalscooterbarcelona.com/nl/scooter/">50cc- en 125cc-scooters</a>, <a href="https://rentalscooterbarcelona.com/nl/rollerblades/">inline skates</a>, <a href="https://rentalscooterbarcelona.com/nl/bike/">fietsen</a>, rolschaatsen en skateboards en longboards in onze lokale winkel.</p>
-<div aria-label="Belangrijkste verhuurlinks" class="hero-service-links"><a class="hero-service-link" href="https://rentalscooterbarcelona.com/nl/scooter/">Scooterverhuur in Barcelona</a><a class="hero-service-link" href="https://rentalscooterbarcelona.com/nl/rollerblades/">Inline skates verhuur in Barcelona</a><a class="hero-service-link more-rentals-link" href="https://rentalscooterbarcelona.com/nl/Prices/">Fietsen, rolschaatsen en boards</a></div>
+<div role="navigation" aria-label="Belangrijkste verhuurlinks" class="hero-service-links"><a class="hero-service-link" href="https://rentalscooterbarcelona.com/nl/scooter/">Scooterverhuur in Barcelona</a><a class="hero-service-link" href="https://rentalscooterbarcelona.com/nl/rollerblades/">Inline skates verhuur in Barcelona</a><a class="hero-service-link more-rentals-link" href="https://rentalscooterbarcelona.com/nl/Prices/">Fietsen, rolschaatsen en boards</a></div>
 <div class="pills">
 <div class="pill"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><path d="M9 22V12h6v10"></path></svg><span>Gratis scooterbezorging bij het hotel (3+ dagen)</span></div>
 </div>
@@ -818,7 +825,7 @@
               </div>
 </div>
 </div>
-<section style="background:hsl(217 91% 60% / 0.06);padding-top:0.5rem;padding-bottom:1.5rem">
+<div style="background:hsl(217 91% 60% / 0.06);padding-top:0.5rem;padding-bottom:1.5rem">
 <div class="container-narrow">
 <div class="text-center mb-8 reveal">
 <span class="badge">Volg ons</span>
@@ -846,7 +853,7 @@
 </a>
 </div>
 </div>
-</section>
+</div>
 <section class="section-padding bg-muted">
 <div class="container-narrow">
 <div class="text-center mb-16 reveal">
@@ -907,74 +914,92 @@
 </div>
 <div class="faq-wrap reveal">
 <div class="faq-item">
+<h3 class="faq-heading">
 <button aria-expanded="false" class="faq-q" type="button">
-<h3 style="margin:0;font-size:inherit;font-weight:inherit;line-height:inherit">Waar ligt RSB Rental Scooter Barcelona?</h3>
+<span class="faq-question">Waar ligt RSB Rental Scooter Barcelona?</span>
 <span class="faq-toggle"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
 </button>
+</h3>
 <div class="faq-a"><p>We zitten in Vila Olímpica del Poblenou, aan Carrer de Salvador Espriu, 63, 08005 Barcelona, dicht bij Port Olímpic en het strand van Barceloneta.</p></div>
 </div>
 <div class="faq-item">
+<h3 class="faq-heading">
 <button aria-expanded="false" class="faq-q" type="button">
-<h3 style="margin:0;font-size:inherit;font-weight:inherit;line-height:inherit">Bieden jullie gratis scooterbezorging bij het hotel aan?</h3>
+<span class="faq-question">Bieden jullie gratis scooterbezorging bij het hotel aan?</span>
 <span class="faq-toggle"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
 </button>
+</h3>
 <div class="faq-a"><p>Ja. Gratis scooterbezorging bij het hotel is inbegrepen voor huurperiodes van 3 dagen of langer in Barcelona. Neem contact op om de beschikbaarheid te bevestigen.</p></div>
 </div>
 <div class="faq-item">
+<h3 class="faq-heading">
 <button aria-expanded="false" class="faq-q" type="button">
-<h3 style="margin:0;font-size:inherit;font-weight:inherit;line-height:inherit">Kan ik mijn bagage of spullen in de winkel laten tijdens de huur?</h3>
+<span class="faq-question">Kan ik mijn bagage of spullen in de winkel laten tijdens de huur?</span>
 <span class="faq-toggle"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
 </button>
+</h3>
 <div class="faq-a"><p>Ja. We hebben gratis bagageopslag voor koffers, schoenen, jassen en rugzakken in onze bewaakte winkel.</p></div>
 </div>
 <div class="faq-item">
+<h3 class="faq-heading">
 <button aria-expanded="false" class="faq-q" type="button">
-<h3 style="margin:0;font-size:inherit;font-weight:inherit;line-height:inherit">Hebben inline skates, fietsen, rolschaatsen, skateboards en longboards een borg nodig?</h3>
+<span class="faq-question">Hebben inline skates, fietsen, rolschaatsen, skateboards en longboards een borg nodig?</span>
 <span class="faq-toggle"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
 </button>
+</h3>
 <div class="faq-a"><p>Nee. Voor deze verhuur is geen borg nodig. Je hebt alleen een geldig identiteitsbewijs nodig.</p></div>
 </div>
 <div class="faq-item">
+<h3 class="faq-heading">
 <button aria-expanded="false" class="faq-q" type="button">
-<h3 style="margin:0;font-size:inherit;font-weight:inherit;line-height:inherit">Heb ik een rijbewijs nodig om in Barcelona een scooter te huren?</h3>
+<span class="faq-question">Heb ik een rijbewijs nodig om in Barcelona een scooter te huren?</span>
 <span class="faq-toggle"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
 </button>
+</h3>
 <div class="faq-a"><p>Ja. Je hebt een geldig rijbewijs nodig. Voor 125cc-scooters heb je een B-rijbewijs nodig dat je minstens 3 jaar hebt, of het bijbehorende motorrijbewijs.</p></div>
 </div>
 <div class="faq-item">
+<h3 class="faq-heading">
 <button aria-expanded="false" class="faq-q" type="button">
-<h3 style="margin:0;font-size:inherit;font-weight:inherit;line-height:inherit">Zijn helmen en beschermers inbegrepen in de prijs?</h3>
+<span class="faq-question">Zijn helmen en beschermers inbegrepen in de prijs?</span>
 <span class="faq-toggle"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
 </button>
+</h3>
 <div class="faq-a"><p>Ja. Scooterhuur omvat twee helmen. Bij de huur van inline skates zijn een kinderhelm, polsbeschermers, kniebeschermers en elleboogbeschermers inbegrepen.</p></div>
 </div>
 <div class="faq-item">
+<h3 class="faq-heading">
 <button aria-expanded="false" class="faq-q" type="button">
-<h3 style="margin:0;font-size:inherit;font-weight:inherit;line-height:inherit">Wat zijn de beste plekken om inline skates of een scooter te gebruiken in de buurt van de winkel?</h3>
+<span class="faq-question">Wat zijn de beste plekken om inline skates of een scooter te gebruiken in de buurt van de winkel?</span>
 <span class="faq-toggle"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
 </button>
+</h3>
 <div class="faq-a"><p>Vila Olímpica del Poblenou, Port Olímpic en Barceloneta bieden enkele van de beste vlakke routes vlak bij onze winkel.</p></div>
 </div>
 <div class="faq-item">
+<h3 class="faq-heading">
 <button aria-expanded="false" class="faq-q" type="button">
-<h3 style="margin:0;font-size:inherit;font-weight:inherit;line-height:inherit">Kan de scooter buiten openingstijden worden teruggebracht?</h3>
+<span class="faq-question">Kan de scooter buiten openingstijden worden teruggebracht?</span>
 <span class="faq-toggle"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
 </button>
+</h3>
 <div class="faq-a"><p>Ja. We bieden scooterretour buiten openingstijden aan. Neem vooraf contact op.</p></div>
 </div>
 <div class="faq-item">
+<h3 class="faq-heading">
 <button aria-expanded="false" class="faq-q" type="button">
-<h3 style="margin:0;font-size:inherit;font-weight:inherit;line-height:inherit">Welke betaalmethoden accepteren jullie?</h3>
+<span class="faq-question">Welke betaalmethoden accepteren jullie?</span>
 <span class="faq-toggle"><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg><svg aria-hidden="true" class="icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><line x1="5" x2="19" y1="12" y2="12"></line></svg></span>
 </button>
+</h3>
 <div class="faq-a"><p>We accepteren kaartbetalingen. PayPal is ook beschikbaar voor online betalingen.</p></div>
 </div>
 </div>
 </div>
 </section>
-<section class="gallery">
+<div class="gallery">
 <div class="reveal">
-<div aria-label="Afbeeldingengalerij" class="gallery-track">
+<div role="group" aria-label="Afbeeldingengalerij" class="gallery-track">
 <div class="gallery-item"><img alt="Persoon met inline skates vlak bij Vila Olímpica, Barcelona" height="600" loading="lazy" src="https://rentalscooterbarcelona.com/images/9.webp" width="800"/></div>
 <div class="gallery-item"><img alt="Longboards en helmen in de RSB-winkel in Vila Olímpica, Barcelona" height="600" loading="lazy" src="https://rentalscooterbarcelona.com/images/skateboards-rental-barcelona.webp" width="800"/></div>
 <div class="gallery-item"><img alt="Bezorging van een 125cc-scooter door RSB in Barcelona" height="600" loading="lazy" src="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-scooter-barcelona.webp" width="800"/></div>
@@ -987,7 +1012,7 @@
 <div class="gallery-item"><img alt="Drie personen op longboards langs de boulevard van Barceloneta bij zonsondergang, Barcelona" height="600" loading="lazy" src="https://rentalscooterbarcelona.com/images/rsb-barcelona-rental-rsb-villa-olimpica-del-poble-nou--rent-skateboard-barcelona-soleado-800-v1.webp" width="800"/></div>
 </div>
 </div>
-</section>
+</div>
 <section class="section-padding bg-card">
 <div class="container-narrow">
 <div class="grid lg-2" style="align-items:center;gap:3rem">
@@ -1031,7 +1056,7 @@
 </div>
 </div>
 <div class="grid md-2 lg-3" style="gap:1.25rem">
-<article class="card-elevated reveal" style="padding:1.5rem;position:relative">
+<div class="card-elevated reveal" style="padding:1.5rem;position:relative">
 <div style="position:absolute;top:1rem;right:1rem;color:hsl(217 91% 60% / 0.2)"><svg aria-hidden="true" class="icon-xl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M7 17h4l1-4V7H6v6h3z"></path><path d="M15 17h4l1-4V7h-6v6h3z"></path></svg></div>
 <div style="display:flex;gap:0.2rem;color:#facc15;margin-bottom:1rem">
 <svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg>
@@ -1047,8 +1072,8 @@
 </div>
 <a class="tag primary" href="https://rentalscooterbarcelona.com/nl/scooter/" style="text-decoration:none;">Scooter</a>
 </div>
-</article>
-<article class="card-elevated reveal" style="padding:1.5rem;position:relative">
+</div>
+<div class="card-elevated reveal" style="padding:1.5rem;position:relative">
 <div style="position:absolute;top:1rem;right:1rem;color:hsl(217 91% 60% / 0.2)"><svg aria-hidden="true" class="icon-xl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M7 17h4l1-4V7H6v6h3z"></path><path d="M15 17h4l1-4V7h-6v6h3z"></path></svg></div>
 <div style="display:flex;gap:0.2rem;color:#facc15;margin-bottom:1rem">
 <svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg>
@@ -1064,8 +1089,8 @@
 </div>
 <a class="tag primary" href="https://rentalscooterbarcelona.com/nl/scooter/" style="text-decoration:none;">125cc</a>
 </div>
-</article>
-<article class="card-elevated reveal" style="padding:1.5rem;position:relative">
+</div>
+<div class="card-elevated reveal" style="padding:1.5rem;position:relative">
 <div style="position:absolute;top:1rem;right:1rem;color:hsl(217 91% 60% / 0.2)"><svg aria-hidden="true" class="icon-xl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M7 17h4l1-4V7H6v6h3z"></path><path d="M15 17h4l1-4V7h-6v6h3z"></path></svg></div>
 <div style="display:flex;gap:0.2rem;color:#facc15;margin-bottom:1rem">
 <svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg>
@@ -1081,8 +1106,8 @@
 </div>
 <a class="tag primary" href="https://rentalscooterbarcelona.com/nl/scooter/" style="text-decoration:none;">Scooter</a>
 </div>
-</article>
-<article class="card-elevated reveal" style="padding:1.5rem;position:relative">
+</div>
+<div class="card-elevated reveal" style="padding:1.5rem;position:relative">
 <div style="position:absolute;top:1rem;right:1rem;color:hsl(217 91% 60% / 0.2)"><svg aria-hidden="true" class="icon-xl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M7 17h4l1-4V7H6v6h3z"></path><path d="M15 17h4l1-4V7h-6v6h3z"></path></svg></div>
 <div style="display:flex;gap:0.2rem;color:#facc15;margin-bottom:1rem">
 <svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg>
@@ -1098,8 +1123,8 @@
 </div>
 <a class="tag primary" href="https://rentalscooterbarcelona.com/nl/scooter/" style="text-decoration:none;">24u scooter</a>
 </div>
-</article>
-<article class="card-elevated reveal" style="padding:1.5rem;position:relative">
+</div>
+<div class="card-elevated reveal" style="padding:1.5rem;position:relative">
 <div style="position:absolute;top:1rem;right:1rem;color:hsl(217 91% 60% / 0.2)"><svg aria-hidden="true" class="icon-xl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M7 17h4l1-4V7H6v6h3z"></path><path d="M15 17h4l1-4V7h-6v6h3z"></path></svg></div>
 <div style="display:flex;gap:0.2rem;color:#facc15;margin-bottom:1rem">
 <svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg>
@@ -1115,8 +1140,8 @@
 </div>
 <a class="tag primary" href="https://rentalscooterbarcelona.com/nl/rollerblades/" style="text-decoration:none;">Skates</a>
 </div>
-</article>
-<article class="card-elevated reveal" style="padding:1.5rem;position:relative">
+</div>
+<div class="card-elevated reveal" style="padding:1.5rem;position:relative">
 <div style="position:absolute;top:1rem;right:1rem;color:hsl(217 91% 60% / 0.2)"><svg aria-hidden="true" class="icon-xl" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M7 17h4l1-4V7H6v6h3z"></path><path d="M15 17h4l1-4V7h-6v6h3z"></path></svg></div>
 <div style="display:flex;gap:0.2rem;color:#facc15;margin-bottom:1rem">
 <svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg><svg aria-hidden="true" class="star" fill="currentColor" stroke="currentColor" stroke-width="0" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg>
@@ -1132,7 +1157,7 @@
 </div>
 <a class="tag primary" href="https://rentalscooterbarcelona.com/nl/bike/" style="text-decoration:none;">Fiets</a>
 </div>
-</article>
+</div>
 <div class="text-center mt-12 reveal">
 <a href="https://www.google.com/maps?cid=912877649802486634" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;color:var(--primary);font-weight:600" target="_blank">
 <svg aria-hidden="true" class="icon-lg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><polygon points="12 2 15 9 22 9 16.5 13.5 18.5 21 12 16.8 5.5 21 7.5 13.5 2 9 9 9 12 2"></polygon></svg>
