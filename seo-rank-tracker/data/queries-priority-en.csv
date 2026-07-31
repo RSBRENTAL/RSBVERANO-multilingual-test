@@ -1,0 +1,35 @@
+query_id,category,language,scenario,search_country,search_city,latitude,longitude,device,engine,surface,query,expected_language_path,active
+en_tourist_in_barcelona_mobile_100,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,scooter hire Barcelona,/,true
+en_tourist_in_barcelona_desktop_100,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,scooter hire Barcelona,/,true
+en_tourist_in_barcelona_mobile_101,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,50cc scooter rental Barcelona,/,true
+en_tourist_in_barcelona_desktop_101,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,50cc scooter rental Barcelona,/,true
+en_tourist_in_barcelona_mobile_102,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,125cc scooter rental Barcelona,/,true
+en_tourist_in_barcelona_desktop_102,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,125cc scooter rental Barcelona,/,true
+en_tourist_in_barcelona_mobile_103,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,scooter rental Barceloneta,/,true
+en_tourist_in_barcelona_desktop_103,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,scooter rental Barceloneta,/,true
+en_tourist_in_barcelona_mobile_104,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,scooter rental Port Olympic Barcelona,/,true
+en_tourist_in_barcelona_desktop_104,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,scooter rental Port Olympic Barcelona,/,true
+en_tourist_in_barcelona_mobile_105,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,scooter rental Vila Olimpica Barcelona,/,true
+en_tourist_in_barcelona_desktop_105,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,scooter rental Vila Olimpica Barcelona,/,true
+en_tourist_in_barcelona_mobile_106,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,scooter rental Barcelona beach,/,true
+en_tourist_in_barcelona_desktop_106,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,scooter rental Barcelona beach,/,true
+en_tourist_in_barcelona_mobile_107,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,cheap scooter rental Barcelona,/,true
+en_tourist_in_barcelona_desktop_107,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,cheap scooter rental Barcelona,/,true
+en_tourist_in_barcelona_mobile_108,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,scooter rental Barcelona prices,/,true
+en_tourist_in_barcelona_desktop_108,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,scooter rental Barcelona prices,/,true
+en_tourist_in_barcelona_mobile_109,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,rollerblade rental Barcelona,/,true
+en_tourist_in_barcelona_desktop_109,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,rollerblade rental Barcelona,/,true
+en_tourist_in_barcelona_mobile_110,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,rent rollerblades Barcelona,/,true
+en_tourist_in_barcelona_desktop_110,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,rent rollerblades Barcelona,/,true
+en_tourist_in_barcelona_mobile_111,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,skates rental Barcelona,/,true
+en_tourist_in_barcelona_desktop_111,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,skates rental Barcelona,/,true
+en_tourist_in_barcelona_mobile_112,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,rollerblades hire Barcelona,/,true
+en_tourist_in_barcelona_desktop_112,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,rollerblades hire Barcelona,/,true
+en_tourist_in_barcelona_mobile_113,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,rollerblades rental Barceloneta,/,true
+en_tourist_in_barcelona_desktop_113,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,rollerblades rental Barceloneta,/,true
+en_tourist_in_barcelona_mobile_114,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,rollerblades rental Port Olympic,/,true
+en_tourist_in_barcelona_desktop_114,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,rollerblades rental Port Olympic,/,true
+en_tourist_in_barcelona_mobile_115,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,rollerblades rental Barcelona beach,/,true
+en_tourist_in_barcelona_desktop_115,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,rollerblades rental Barcelona beach,/,true
+en_tourist_in_barcelona_mobile_116,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,rollerblade rental by hour Barcelona,/,true
+en_tourist_in_barcelona_desktop_116,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,rollerblade rental by hour Barcelona,/,true
