@@ -270,11 +270,31 @@
       "ca": "https://rentalscooterbarcelona.com/cat/blog/best-rollerblading-routes-barcelona/",
       "sv": "https://rentalscooterbarcelona.com/sv/blog/best-rollerblading-routes-barcelona/",
       "pl": "https://rentalscooterbarcelona.com/pl/blog/best-rollerblading-routes-barcelona/"
+    },
+    "blogHourlyInlineSkates": {
+      "en": "https://rentalscooterbarcelona.com/blog/hourly-inline-skate-rental-barcelona/",
+      "es": "https://rentalscooterbarcelona.com/es/blog/alquiler-patines-linea-barcelona-por-horas/",
+      "fr": "https://rentalscooterbarcelona.com/fr/blog/location-rollers-en-ligne-barcelone-heure/",
+      "it": "https://rentalscooterbarcelona.com/it/blog/noleggio-pattini-linea-barcellona-a-ore/",
+      "de": "https://rentalscooterbarcelona.com/de/blog/inlineskates-stundenweise-mieten-barcelona/",
+      "nl": "https://rentalscooterbarcelona.com/nl/blog/inline-skates-huren-barcelona-per-uur/",
+      "pt": "https://rentalscooterbarcelona.com/pt/blog/aluguer-patins-linha-barcelona-a-hora/",
+      "ca": "https://rentalscooterbarcelona.com/cat/blog/lloguer-patins-linia-barcelona-per-hores/",
+      "sv": "https://rentalscooterbarcelona.com/sv/blog/hyra-inlines-barcelona-per-timme/",
+      "pl": "https://rentalscooterbarcelona.com/pl/blog/wynajem-rolek-na-godziny-barcelona/"
+    },
+    "blogBeginnerInlineSkating": {
+      "en": "https://rentalscooterbarcelona.com/blog/beginner-inline-skating-barcelona/",
+      "es": "https://rentalscooterbarcelona.com/es/blog/patinar-en-barcelona-principiantes/",
+      "fr": "https://rentalscooterbarcelona.com/fr/blog/roller-en-ligne-debutants-barcelone/",
+      "it": "https://rentalscooterbarcelona.com/it/blog/pattinaggio-inline-principianti-barcellona/",
+      "de": "https://rentalscooterbarcelona.com/de/blog/inlineskaten-barcelona-anfaenger/",
+      "nl": "https://rentalscooterbarcelona.com/nl/blog/inline-skaten-barcelona-beginners/",
+      "pt": "https://rentalscooterbarcelona.com/pt/blog/patinagem-inline-barcelona-iniciantes/",
+      "ca": "https://rentalscooterbarcelona.com/cat/blog/patinar-linia-barcelona-principiants/",
+      "sv": "https://rentalscooterbarcelona.com/sv/blog/inline-skating-barcelona-nyborjare/",
+      "pl": "https://rentalscooterbarcelona.com/pl/blog/jazda-na-rolkach-barcelona-poczatkujacy/"
     }
-  },
-  "spanishAdditionalSeoBlogPages": {
-    "alquilerPatinesLineaPorHoras": "https://rentalscooterbarcelona.com/es/blog/alquiler-patines-linea-barcelona-por-horas/",
-    "patinarEnBarcelonaPrincipiantes": "https://rentalscooterbarcelona.com/es/blog/patinar-en-barcelona-principiantes/"
   },
   "sitemaps": {
     "main": "https://rentalscooterbarcelona.com/sitemap.xml",

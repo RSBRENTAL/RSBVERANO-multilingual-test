@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 
@@ -45,7 +43,7 @@ $payload = [
     'ok' => true,
     'is_open' => $isOpen,
     'timezone' => $timezone->getName(),
-    'current_time' => $now->format(DateTimeInterface::ATOM),
+    'current_time' => $now->format(DATE_ATOM),
     'daily' => $dailyHours,
     'morning' => $morningOpens . '–' . $morningCloses,
     'afternoon' => $afternoonOpens . '–' . $afternoonCloses,

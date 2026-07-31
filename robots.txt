@@ -15,8 +15,6 @@ Disallow: /old/
 Disallow: /testing/
 
 # Parametros habituales que pueden generar duplicados
-Disallow: /*?utm_*
-Disallow: /*?fbclid=*
 
 Sitemap: https://rentalscooterbarcelona.com/sitemap.xml
 
