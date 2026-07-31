@@ -1,0 +1,10 @@
+.env
+credentials/
+client_secret*.json
+token*.json
+*.key
+*.pem
+data/results/*
+!data/results/.gitkeep
+reports/*
+!reports/.gitkeep

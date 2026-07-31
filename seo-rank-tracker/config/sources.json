@@ -1,0 +1,9 @@
+{
+  "sources": {
+    "google_search_console": {"enabled": true, "paid": false, "surface": "search_console"},
+    "bing_webmaster": {"enabled": true, "paid": false, "surface": "bing_webmaster"},
+    "google_generative_ai_import": {"enabled": true, "paid": false, "surface": "google_generative_ai"},
+    "serp_api": {"enabled": false, "paid": true, "note": "Not implemented in phase 1"},
+    "ai_model_apis": {"enabled": false, "paid": true, "note": "Not implemented in phase 1"}
+  }
+}
