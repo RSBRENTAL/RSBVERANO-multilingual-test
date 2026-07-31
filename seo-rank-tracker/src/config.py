@@ -7,6 +7,7 @@ try:
 except ImportError:  # pragma: no cover
     load_dotenv = None
 
+
 def _fallback_load_dotenv(path):
     if not path.exists():
         return
@@ -17,30 +18,80 @@ def _fallback_load_dotenv(path):
         key, value = line.split("=", 1)
         os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
+
 if load_dotenv:
     load_dotenv(ROOT / ".env", override=False)
 else:
     _fallback_load_dotenv(ROOT / ".env")
 
+
 def load_json(relative_path):
     with (ROOT / relative_path).open(encoding="utf-8") as handle:
         return json.load(handle)
 
+
 def load_languages():
     return load_json("config/languages.json")["languages"]
+
 
 def language_paths():
     return {item["code"]: item["path"] for item in load_languages()}
 
+
 def normalize_query(value):
     return re.sub(r"\s+", " ", (value or "").strip().casefold())
 
+
+def _load_query_csv_files():
+    rows = []
+    query_files = [ROOT / "data/queries.csv"]
+    query_files.extend(sorted((ROOT / "data").glob("queries-priority-*.csv")))
+    for path in query_files:
+        if not path.exists():
+            continue
+        with path.open(newline="", encoding="utf-8") as handle:
+            rows.extend(csv.DictReader(handle))
+    return rows
+
+
+def _load_generated_priority_queries():
+    path = ROOT / "config/priority_queries.json"
+    if not path.exists():
+        return []
+    payload = load_json("config/priority_queries.json")
+    scenario = payload["scenario"]
+    rows = []
+    for language, language_config in payload["languages"].items():
+        sequence = 200
+        for category in ("scooter", "rollerblades"):
+            for query in language_config.get(category, []):
+                for device in ("mobile", "desktop"):
+                    rows.append({
+                        "query_id": f"{language}_tourist_in_barcelona_{device}_{sequence:03d}",
+                        "category": category,
+                        "language": language,
+                        "scenario": scenario["id"],
+                        "search_country": scenario["search_country"],
+                        "search_city": scenario["search_city"],
+                        "latitude": scenario["latitude"],
+                        "longitude": scenario["longitude"],
+                        "device": device,
+                        "engine": "google",
+                        "surface": "search_console",
+                        "query": query,
+                        "expected_language_path": language_config["path"],
+                        "active": "true",
+                    })
+                sequence += 1
+    return rows
+
+
 def load_queries(include_inactive=True):
-    with (ROOT / "data/queries.csv").open(newline="", encoding="utf-8") as handle:
-        rows = list(csv.DictReader(handle))
+    rows = _load_query_csv_files() + _load_generated_priority_queries()
     if include_inactive:
         return rows
     return [row for row in rows if row.get("active", "").lower() == "true"]
+
 
 def query_lookup(include_inactive=False, engine="google", surface="search_console"):
     lookup = {}
@@ -48,7 +99,12 @@ def query_lookup(include_inactive=False, engine="google", surface="search_consol
     for row in load_queries(include_inactive=include_inactive):
         if not include_inactive and row.get("active", "").lower() != "true":
             continue
-        key = (normalize_query(row.get("query")), (row.get("device") or "").casefold(), (row.get("engine") or "").casefold(), (row.get("surface") or "").casefold())
+        key = (
+            normalize_query(row.get("query")),
+            (row.get("device") or "").casefold(),
+            (row.get("engine") or "").casefold(),
+            (row.get("surface") or "").casefold(),
+        )
         if engine and key[2] != engine:
             continue
         if surface and key[3] != surface:
@@ -60,6 +116,7 @@ def query_lookup(include_inactive=False, engine="google", surface="search_consol
         raise ValueError(f"Duplicate active query keys: {duplicates}")
     return lookup
 
+
 def active_unique_queries(engine="google", surface="search_console"):
     seen = []
     keys = set()
@@ -68,8 +125,10 @@ def active_unique_queries(engine="google", surface="search_console"):
             continue
         key = normalize_query(row.get("query"))
         if key not in keys:
-            keys.add(key); seen.append(row.get("query", ""))
+            keys.add(key)
+            seen.append(row.get("query", ""))
     return seen
+
 
 def env(name):
     return os.environ.get(name, "")
