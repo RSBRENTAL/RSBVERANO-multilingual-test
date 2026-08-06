@@ -1,0 +1,245 @@
+{
+  "scenario": {
+    "id": "TOURIST_IN_BARCELONA",
+    "search_country": "ES",
+    "search_city": "Barcelona",
+    "latitude": "41.387397",
+    "longitude": "2.168568"
+  },
+  "languages": {
+    "es": {
+      "path": "/es/",
+      "scooter": [
+        "alquiler de scooter Barcelona",
+        "alquilar scooter Barcelona",
+        "alquiler scooter 50cc Barcelona",
+        "alquiler scooter 125cc Barcelona",
+        "alquiler scooter Barceloneta",
+        "alquiler scooter Port Olímpic",
+        "alquiler scooter Vila Olímpica",
+        "alquiler scooter Barcelona playa",
+        "alquiler scooter barato Barcelona",
+        "precios alquiler scooter Barcelona"
+      ],
+      "rollerblades": [
+        "alquilar patines Barcelona",
+        "alquiler rollerblades Barcelona",
+        "alquiler patines Barceloneta",
+        "alquiler patines Port Olímpic",
+        "alquiler patines Vila Olímpica",
+        "alquiler patines Barcelona playa",
+        "alquiler patines por horas Barcelona",
+        "precio alquiler patines Barcelona"
+      ]
+    },
+    "fr": {
+      "path": "/fr/",
+      "scooter": [
+        "louer un scooter Barcelone",
+        "location de scooter Barcelone",
+        "location scooter 50cc Barcelone",
+        "location scooter 125cc Barcelone",
+        "location scooter Barceloneta",
+        "location scooter Port Olímpic Barcelone",
+        "location scooter Vila Olímpica Barcelone",
+        "location scooter plage Barcelone",
+        "location scooter pas cher Barcelone",
+        "prix location scooter Barcelone"
+      ],
+      "rollerblades": [
+        "location de rollers Barcelone",
+        "location rollers en ligne Barcelone",
+        "louer des rollers Barcelone",
+        "location rollerblades Barcelone",
+        "location rollers Barceloneta",
+        "location rollers Port Olímpic",
+        "location rollers plage Barcelone",
+        "location rollers à l'heure Barcelone",
+        "prix location rollers Barcelone"
+      ]
+    },
+    "it": {
+      "path": "/it/",
+      "scooter": [
+        "noleggiare scooter Barcellona",
+        "noleggio motorino Barcellona",
+        "noleggio scooter 50cc Barcellona",
+        "noleggio scooter 125cc Barcellona",
+        "noleggio scooter Barceloneta",
+        "noleggio scooter Port Olímpic Barcellona",
+        "noleggio scooter Vila Olímpica Barcellona",
+        "noleggio scooter spiaggia Barcellona",
+        "noleggio scooter economico Barcellona",
+        "prezzi noleggio scooter Barcellona"
+      ],
+      "rollerblades": [
+        "noleggio pattini in linea Barcellona",
+        "noleggiare pattini Barcellona",
+        "noleggio rollerblade Barcellona",
+        "noleggio pattini Barceloneta",
+        "noleggio pattini Port Olímpic",
+        "noleggio pattini Vila Olímpica",
+        "noleggio pattini spiaggia Barcellona",
+        "noleggio pattini a ore Barcellona",
+        "prezzi noleggio pattini Barcellona"
+      ]
+    },
+    "de": {
+      "path": "/de/",
+      "scooter": [
+        "Roller mieten Barcelona",
+        "Scooter mieten Barcelona",
+        "50cc Roller mieten Barcelona",
+        "125cc Roller mieten Barcelona",
+        "Motorroller mieten Barceloneta",
+        "Motorroller mieten Port Olímpic",
+        "Motorroller mieten Vila Olímpica",
+        "Motorroller mieten Barcelona Strand",
+        "günstiger Motorroller Verleih Barcelona",
+        "Motorroller Verleih Barcelona Preise"
+      ],
+      "rollerblades": [
+        "Inline Skates mieten Barcelona",
+        "Inliner mieten Barcelona",
+        "Inlineskates Verleih Barcelona",
+        "Inlineskates mieten Barceloneta",
+        "Inlineskates mieten Port Olímpic",
+        "Inlineskates mieten Vila Olímpica",
+        "Inlineskates mieten Barcelona Strand",
+        "Inlineskates stundenweise mieten Barcelona",
+        "Inlineskates Verleih Barcelona Preise"
+      ]
+    },
+    "nl": {
+      "path": "/nl/",
+      "scooter": [
+        "scooterverhuur Barcelona",
+        "een scooter huren Barcelona",
+        "50cc scooter huren Barcelona",
+        "125cc scooter huren Barcelona",
+        "scooter huren Barceloneta",
+        "scooter huren Port Olímpic",
+        "scooter huren Vila Olímpica",
+        "scooter huren Barcelona strand",
+        "goedkope scooterhuur Barcelona",
+        "prijzen scooterverhuur Barcelona"
+      ],
+      "rollerblades": [
+        "inline skates huren Barcelona",
+        "inlineskates huren Barcelona",
+        "rollerblades huren Barcelona",
+        "skeelerverhuur Barcelona",
+        "skeelers huren Barceloneta",
+        "inline skates huren Port Olímpic",
+        "inline skates huren Vila Olímpica",
+        "inline skates huren Barcelona strand",
+        "inline skates per uur huren Barcelona"
+      ]
+    },
+    "pt": {
+      "path": "/pt/",
+      "scooter": [
+        "aluguer de scooter Barcelona",
+        "alugar scooter Barcelona",
+        "aluguer de moto Barcelona",
+        "aluguer de scooter 50cc Barcelona",
+        "aluguer de scooter 125cc Barcelona",
+        "aluguer de scooter Barceloneta",
+        "aluguer de scooter Port Olímpic",
+        "aluguer de scooter Vila Olímpica",
+        "aluguer de scooter praia Barcelona",
+        "aluguer de scooter barato Barcelona",
+        "preços aluguer de scooter Barcelona"
+      ],
+      "rollerblades": [
+        "aluguer de patins Barcelona",
+        "aluguer de patins em linha Barcelona",
+        "alugar patins Barcelona",
+        "aluguer de rollerblades Barcelona",
+        "aluguer de patins Barceloneta",
+        "aluguer de patins Port Olímpic",
+        "aluguer de patins Vila Olímpica",
+        "aluguer de patins na praia Barcelona",
+        "aluguer de patins à hora Barcelona"
+      ]
+    },
+    "ca": {
+      "path": "/cat/",
+      "scooter": [
+        "lloguer de scooter Barcelona",
+        "llogar scooter Barcelona",
+        "lloguer scooter 50cc Barcelona",
+        "lloguer scooter 125cc Barcelona",
+        "lloguer scooter Barceloneta",
+        "lloguer scooter Port Olímpic",
+        "lloguer scooter Vila Olímpica",
+        "lloguer scooter platja Barcelona",
+        "lloguer scooter barat Barcelona",
+        "preus lloguer scooter Barcelona"
+      ],
+      "rollerblades": [
+        "lloguer de patins en línia Barcelona",
+        "llogar patins Barcelona",
+        "lloguer de rollerblades Barcelona",
+        "lloguer patins Barceloneta",
+        "lloguer patins Port Olímpic",
+        "lloguer patins Vila Olímpica",
+        "lloguer patins platja Barcelona",
+        "lloguer patins per hores Barcelona",
+        "preu lloguer patins Barcelona"
+      ]
+    },
+    "sv": {
+      "path": "/sv/",
+      "scooter": [
+        "scooteruthyrning Barcelona",
+        "hyra en scooter Barcelona",
+        "hyra 50cc scooter Barcelona",
+        "hyra 125cc scooter Barcelona",
+        "hyra scooter Barceloneta",
+        "hyra scooter Port Olímpic",
+        "hyra scooter Vila Olímpica",
+        "hyra scooter Barcelona strand",
+        "billig scooteruthyrning Barcelona",
+        "priser scooteruthyrning Barcelona"
+      ],
+      "rollerblades": [
+        "inlinesuthyrning Barcelona",
+        "hyra rullskridskor Barcelona",
+        "hyra rollerblades Barcelona",
+        "hyra inlines Barceloneta",
+        "hyra inlines Port Olímpic",
+        "hyra inlines Vila Olímpica",
+        "hyra inlines Barcelona strand",
+        "hyra inlines per timme Barcelona",
+        "priser inlinesuthyrning Barcelona"
+      ]
+    },
+    "pl": {
+      "path": "/pl/",
+      "scooter": [
+        "wypożyczalnia skuterów Barcelona",
+        "wypożyczyć skuter Barcelona",
+        "wynajem skutera 50cc Barcelona",
+        "wynajem skutera 125cc Barcelona",
+        "wynajem skutera Barceloneta",
+        "wynajem skutera Port Olímpic",
+        "wynajem skutera Vila Olímpica",
+        "wynajem skutera plaża Barcelona",
+        "tani wynajem skutera Barcelona",
+        "ceny wynajmu skutera Barcelona"
+      ],
+      "rollerblades": [
+        "wypożyczalnia rolek Barcelona",
+        "wypożyczyć rolki Barcelona",
+        "wynajem rolek inline Barcelona",
+        "wynajem rollerblades Barcelona",
+        "wynajem rolek Barceloneta",
+        "wynajem rolek Port Olímpic",
+        "wynajem rolek Vila Olímpica",
+        "wynajem rolek plaża Barcelona",
+        "wynajem rolek na godziny Barcelona"
+      ]
+    }
+  }
+}

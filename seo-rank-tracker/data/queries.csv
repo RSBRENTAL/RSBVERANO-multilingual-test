@@ -1,0 +1,173 @@
+query_id,category,language,scenario,search_country,search_city,latitude,longitude,device,engine,surface,query,expected_language_path,active
+en_tourist_in_barcelona_mobile_001,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,scooter rental Barcelona,/,true
+en_tourist_in_barcelona_desktop_001,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,scooter rental Barcelona,/,true
+en_tourist_in_barcelona_mobile_002,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,rent a scooter Barcelona,/,true
+en_tourist_in_barcelona_desktop_002,scooter,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,rent a scooter Barcelona,/,true
+en_tourist_in_barcelona_mobile_003,motorbike,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,motorbike rental Barcelona,/,true
+en_tourist_in_barcelona_desktop_003,motorbike,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,motorbike rental Barcelona,/,true
+en_tourist_in_barcelona_mobile_004,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,rollerblades rental Barcelona,/,true
+en_tourist_in_barcelona_desktop_004,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,rollerblades rental Barcelona,/,true
+en_tourist_in_barcelona_mobile_005,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,inline skates rental Barcelona,/,true
+en_tourist_in_barcelona_desktop_005,rollerblades,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,inline skates rental Barcelona,/,true
+en_tourist_in_barcelona_mobile_006,bike,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,bike rental Barcelona beach,/,true
+en_tourist_in_barcelona_desktop_006,bike,en,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,bike rental Barcelona beach,/,true
+es_tourist_in_barcelona_mobile_001,scooter,es,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,alquiler scooter Barcelona,/es/,true
+es_tourist_in_barcelona_desktop_001,scooter,es,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,alquiler scooter Barcelona,/es/,true
+es_tourist_in_barcelona_mobile_002,motorbike,es,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,alquiler moto Barcelona,/es/,true
+es_tourist_in_barcelona_desktop_002,motorbike,es,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,alquiler moto Barcelona,/es/,true
+es_tourist_in_barcelona_mobile_003,rollerblades,es,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,alquiler patines Barcelona,/es/,true
+es_tourist_in_barcelona_desktop_003,rollerblades,es,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,alquiler patines Barcelona,/es/,true
+es_tourist_in_barcelona_mobile_004,rollerblades,es,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,alquiler patines en línea Barcelona,/es/,true
+es_tourist_in_barcelona_desktop_004,rollerblades,es,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,alquiler patines en línea Barcelona,/es/,true
+es_tourist_in_barcelona_mobile_005,bike,es,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,alquiler bicicletas Barcelona playa,/es/,true
+es_tourist_in_barcelona_desktop_005,bike,es,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,alquiler bicicletas Barcelona playa,/es/,true
+fr_tourist_in_barcelona_mobile_001,scooter,fr,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,location scooter Barcelone,/fr/,true
+fr_tourist_in_barcelona_desktop_001,scooter,fr,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,location scooter Barcelone,/fr/,true
+fr_tourist_in_barcelona_mobile_002,motorbike,fr,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,location moto Barcelone,/fr/,true
+fr_tourist_in_barcelona_desktop_002,motorbike,fr,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,location moto Barcelone,/fr/,true
+fr_tourist_in_barcelona_mobile_003,rollerblades,fr,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,location rollers Barcelone,/fr/,true
+fr_tourist_in_barcelona_desktop_003,rollerblades,fr,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,location rollers Barcelone,/fr/,true
+fr_tourist_in_barcelona_mobile_004,bike,fr,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,location vélo Barcelone plage,/fr/,true
+fr_tourist_in_barcelona_desktop_004,bike,fr,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,location vélo Barcelone plage,/fr/,true
+it_tourist_in_barcelona_mobile_001,scooter,it,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,noleggio scooter Barcellona,/it/,true
+it_tourist_in_barcelona_desktop_001,scooter,it,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,noleggio scooter Barcellona,/it/,true
+it_tourist_in_barcelona_mobile_002,motorbike,it,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,noleggio moto Barcellona,/it/,true
+it_tourist_in_barcelona_desktop_002,motorbike,it,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,noleggio moto Barcellona,/it/,true
+it_tourist_in_barcelona_mobile_003,rollerblades,it,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,noleggio pattini Barcellona,/it/,true
+it_tourist_in_barcelona_desktop_003,rollerblades,it,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,noleggio pattini Barcellona,/it/,true
+it_tourist_in_barcelona_mobile_004,bike,it,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,noleggio biciclette Barcellona spiaggia,/it/,true
+it_tourist_in_barcelona_desktop_004,bike,it,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,noleggio biciclette Barcellona spiaggia,/it/,true
+de_tourist_in_barcelona_mobile_001,scooter,de,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,Motorroller mieten Barcelona,/de/,true
+de_tourist_in_barcelona_desktop_001,scooter,de,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,Motorroller mieten Barcelona,/de/,true
+de_tourist_in_barcelona_mobile_002,motorbike,de,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,Motorrad mieten Barcelona,/de/,true
+de_tourist_in_barcelona_desktop_002,motorbike,de,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,Motorrad mieten Barcelona,/de/,true
+de_tourist_in_barcelona_mobile_003,rollerblades,de,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,Inlineskates mieten Barcelona,/de/,true
+de_tourist_in_barcelona_desktop_003,rollerblades,de,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,Inlineskates mieten Barcelona,/de/,true
+de_tourist_in_barcelona_mobile_004,bike,de,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,Fahrradverleih Barcelona Strand,/de/,true
+de_tourist_in_barcelona_desktop_004,bike,de,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,Fahrradverleih Barcelona Strand,/de/,true
+nl_tourist_in_barcelona_mobile_001,scooter,nl,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,scooter huren Barcelona,/nl/,true
+nl_tourist_in_barcelona_desktop_001,scooter,nl,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,scooter huren Barcelona,/nl/,true
+nl_tourist_in_barcelona_mobile_002,motorbike,nl,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,motor huren Barcelona,/nl/,true
+nl_tourist_in_barcelona_desktop_002,motorbike,nl,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,motor huren Barcelona,/nl/,true
+nl_tourist_in_barcelona_mobile_003,rollerblades,nl,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,skeelers huren Barcelona,/nl/,true
+nl_tourist_in_barcelona_desktop_003,rollerblades,nl,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,skeelers huren Barcelona,/nl/,true
+nl_tourist_in_barcelona_mobile_004,bike,nl,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,fiets huren Barcelona strand,/nl/,true
+nl_tourist_in_barcelona_desktop_004,bike,nl,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,fiets huren Barcelona strand,/nl/,true
+pt_tourist_in_barcelona_mobile_001,scooter,pt,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,aluguel de scooter Barcelona,/pt/,true
+pt_tourist_in_barcelona_desktop_001,scooter,pt,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,aluguel de scooter Barcelona,/pt/,true
+pt_tourist_in_barcelona_mobile_002,motorbike,pt,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,aluguel de moto Barcelona,/pt/,true
+pt_tourist_in_barcelona_desktop_002,motorbike,pt,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,aluguel de moto Barcelona,/pt/,true
+pt_tourist_in_barcelona_mobile_003,rollerblades,pt,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,aluguel de patins Barcelona,/pt/,true
+pt_tourist_in_barcelona_desktop_003,rollerblades,pt,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,aluguel de patins Barcelona,/pt/,true
+pt_tourist_in_barcelona_mobile_004,bike,pt,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,aluguel de bicicleta Barcelona praia,/pt/,true
+pt_tourist_in_barcelona_desktop_004,bike,pt,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,aluguel de bicicleta Barcelona praia,/pt/,true
+ca_tourist_in_barcelona_mobile_001,scooter,ca,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,lloguer de scooters Barcelona,/cat/,true
+ca_tourist_in_barcelona_desktop_001,scooter,ca,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,lloguer de scooters Barcelona,/cat/,true
+ca_tourist_in_barcelona_mobile_002,motorbike,ca,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,lloguer de motos Barcelona,/cat/,true
+ca_tourist_in_barcelona_desktop_002,motorbike,ca,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,lloguer de motos Barcelona,/cat/,true
+ca_tourist_in_barcelona_mobile_003,rollerblades,ca,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,lloguer de patins Barcelona,/cat/,true
+ca_tourist_in_barcelona_desktop_003,rollerblades,ca,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,lloguer de patins Barcelona,/cat/,true
+ca_tourist_in_barcelona_mobile_004,bike,ca,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,lloguer de bicicletes Barcelona platja,/cat/,true
+ca_tourist_in_barcelona_desktop_004,bike,ca,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,lloguer de bicicletes Barcelona platja,/cat/,true
+sv_tourist_in_barcelona_mobile_001,scooter,sv,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,hyra scooter Barcelona,/sv/,true
+sv_tourist_in_barcelona_desktop_001,scooter,sv,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,hyra scooter Barcelona,/sv/,true
+sv_tourist_in_barcelona_mobile_002,motorbike,sv,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,hyra motorcykel Barcelona,/sv/,true
+sv_tourist_in_barcelona_desktop_002,motorbike,sv,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,hyra motorcykel Barcelona,/sv/,true
+sv_tourist_in_barcelona_mobile_003,rollerblades,sv,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,hyra inlines Barcelona,/sv/,true
+sv_tourist_in_barcelona_desktop_003,rollerblades,sv,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,hyra inlines Barcelona,/sv/,true
+sv_tourist_in_barcelona_mobile_004,bike,sv,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,cykeluthyrning Barcelona strand,/sv/,true
+sv_tourist_in_barcelona_desktop_004,bike,sv,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,cykeluthyrning Barcelona strand,/sv/,true
+pl_tourist_in_barcelona_mobile_001,scooter,pl,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,wynajem skutera Barcelona,/pl/,true
+pl_tourist_in_barcelona_desktop_001,scooter,pl,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,wynajem skutera Barcelona,/pl/,true
+pl_tourist_in_barcelona_mobile_002,motorbike,pl,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,wynajem motocykla Barcelona,/pl/,true
+pl_tourist_in_barcelona_desktop_002,motorbike,pl,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,wynajem motocykla Barcelona,/pl/,true
+pl_tourist_in_barcelona_mobile_003,rollerblades,pl,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,wynajem rolek Barcelona,/pl/,true
+pl_tourist_in_barcelona_desktop_003,rollerblades,pl,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,wynajem rolek Barcelona,/pl/,true
+pl_tourist_in_barcelona_mobile_004,bike,pl,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,mobile,google,search_console,wynajem roweru Barcelona plaża,/pl/,true
+pl_tourist_in_barcelona_desktop_004,bike,pl,TOURIST_IN_BARCELONA,ES,Barcelona,41.387397,2.168568,desktop,google,search_console,wynajem roweru Barcelona plaża,/pl/,true
+en_pre_trip_origin_mobile_001,scooter,en,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,scooter rental Barcelona,/,false
+en_pre_trip_origin_desktop_001,scooter,en,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,scooter rental Barcelona,/,false
+en_pre_trip_origin_mobile_002,scooter,en,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,rent a scooter Barcelona,/,false
+en_pre_trip_origin_desktop_002,scooter,en,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,rent a scooter Barcelona,/,false
+en_pre_trip_origin_mobile_003,motorbike,en,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,motorbike rental Barcelona,/,false
+en_pre_trip_origin_desktop_003,motorbike,en,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,motorbike rental Barcelona,/,false
+en_pre_trip_origin_mobile_004,rollerblades,en,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,rollerblades rental Barcelona,/,false
+en_pre_trip_origin_desktop_004,rollerblades,en,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,rollerblades rental Barcelona,/,false
+en_pre_trip_origin_mobile_005,rollerblades,en,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,inline skates rental Barcelona,/,false
+en_pre_trip_origin_desktop_005,rollerblades,en,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,inline skates rental Barcelona,/,false
+en_pre_trip_origin_mobile_006,bike,en,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,bike rental Barcelona beach,/,false
+en_pre_trip_origin_desktop_006,bike,en,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,bike rental Barcelona beach,/,false
+es_pre_trip_origin_mobile_001,scooter,es,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,alquiler scooter Barcelona,/es/,false
+es_pre_trip_origin_desktop_001,scooter,es,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,alquiler scooter Barcelona,/es/,false
+es_pre_trip_origin_mobile_002,motorbike,es,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,alquiler moto Barcelona,/es/,false
+es_pre_trip_origin_desktop_002,motorbike,es,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,alquiler moto Barcelona,/es/,false
+es_pre_trip_origin_mobile_003,rollerblades,es,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,alquiler patines Barcelona,/es/,false
+es_pre_trip_origin_desktop_003,rollerblades,es,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,alquiler patines Barcelona,/es/,false
+es_pre_trip_origin_mobile_004,rollerblades,es,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,alquiler patines en línea Barcelona,/es/,false
+es_pre_trip_origin_desktop_004,rollerblades,es,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,alquiler patines en línea Barcelona,/es/,false
+es_pre_trip_origin_mobile_005,bike,es,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,alquiler bicicletas Barcelona playa,/es/,false
+es_pre_trip_origin_desktop_005,bike,es,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,alquiler bicicletas Barcelona playa,/es/,false
+fr_pre_trip_origin_mobile_001,scooter,fr,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,location scooter Barcelone,/fr/,false
+fr_pre_trip_origin_desktop_001,scooter,fr,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,location scooter Barcelone,/fr/,false
+fr_pre_trip_origin_mobile_002,motorbike,fr,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,location moto Barcelone,/fr/,false
+fr_pre_trip_origin_desktop_002,motorbike,fr,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,location moto Barcelone,/fr/,false
+fr_pre_trip_origin_mobile_003,rollerblades,fr,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,location rollers Barcelone,/fr/,false
+fr_pre_trip_origin_desktop_003,rollerblades,fr,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,location rollers Barcelone,/fr/,false
+fr_pre_trip_origin_mobile_004,bike,fr,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,location vélo Barcelone plage,/fr/,false
+fr_pre_trip_origin_desktop_004,bike,fr,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,location vélo Barcelone plage,/fr/,false
+it_pre_trip_origin_mobile_001,scooter,it,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,noleggio scooter Barcellona,/it/,false
+it_pre_trip_origin_desktop_001,scooter,it,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,noleggio scooter Barcellona,/it/,false
+it_pre_trip_origin_mobile_002,motorbike,it,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,noleggio moto Barcellona,/it/,false
+it_pre_trip_origin_desktop_002,motorbike,it,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,noleggio moto Barcellona,/it/,false
+it_pre_trip_origin_mobile_003,rollerblades,it,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,noleggio pattini Barcellona,/it/,false
+it_pre_trip_origin_desktop_003,rollerblades,it,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,noleggio pattini Barcellona,/it/,false
+it_pre_trip_origin_mobile_004,bike,it,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,noleggio biciclette Barcellona spiaggia,/it/,false
+it_pre_trip_origin_desktop_004,bike,it,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,noleggio biciclette Barcellona spiaggia,/it/,false
+de_pre_trip_origin_mobile_001,scooter,de,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,Motorroller mieten Barcelona,/de/,false
+de_pre_trip_origin_desktop_001,scooter,de,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,Motorroller mieten Barcelona,/de/,false
+de_pre_trip_origin_mobile_002,motorbike,de,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,Motorrad mieten Barcelona,/de/,false
+de_pre_trip_origin_desktop_002,motorbike,de,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,Motorrad mieten Barcelona,/de/,false
+de_pre_trip_origin_mobile_003,rollerblades,de,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,Inlineskates mieten Barcelona,/de/,false
+de_pre_trip_origin_desktop_003,rollerblades,de,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,Inlineskates mieten Barcelona,/de/,false
+de_pre_trip_origin_mobile_004,bike,de,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,Fahrradverleih Barcelona Strand,/de/,false
+de_pre_trip_origin_desktop_004,bike,de,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,Fahrradverleih Barcelona Strand,/de/,false
+nl_pre_trip_origin_mobile_001,scooter,nl,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,scooter huren Barcelona,/nl/,false
+nl_pre_trip_origin_desktop_001,scooter,nl,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,scooter huren Barcelona,/nl/,false
+nl_pre_trip_origin_mobile_002,motorbike,nl,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,motor huren Barcelona,/nl/,false
+nl_pre_trip_origin_desktop_002,motorbike,nl,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,motor huren Barcelona,/nl/,false
+nl_pre_trip_origin_mobile_003,rollerblades,nl,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,skeelers huren Barcelona,/nl/,false
+nl_pre_trip_origin_desktop_003,rollerblades,nl,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,skeelers huren Barcelona,/nl/,false
+nl_pre_trip_origin_mobile_004,bike,nl,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,fiets huren Barcelona strand,/nl/,false
+nl_pre_trip_origin_desktop_004,bike,nl,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,fiets huren Barcelona strand,/nl/,false
+pt_pre_trip_origin_mobile_001,scooter,pt,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,aluguel de scooter Barcelona,/pt/,false
+pt_pre_trip_origin_desktop_001,scooter,pt,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,aluguel de scooter Barcelona,/pt/,false
+pt_pre_trip_origin_mobile_002,motorbike,pt,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,aluguel de moto Barcelona,/pt/,false
+pt_pre_trip_origin_desktop_002,motorbike,pt,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,aluguel de moto Barcelona,/pt/,false
+pt_pre_trip_origin_mobile_003,rollerblades,pt,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,aluguel de patins Barcelona,/pt/,false
+pt_pre_trip_origin_desktop_003,rollerblades,pt,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,aluguel de patins Barcelona,/pt/,false
+pt_pre_trip_origin_mobile_004,bike,pt,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,aluguel de bicicleta Barcelona praia,/pt/,false
+pt_pre_trip_origin_desktop_004,bike,pt,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,aluguel de bicicleta Barcelona praia,/pt/,false
+ca_pre_trip_origin_mobile_001,scooter,ca,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,lloguer de scooters Barcelona,/cat/,false
+ca_pre_trip_origin_desktop_001,scooter,ca,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,lloguer de scooters Barcelona,/cat/,false
+ca_pre_trip_origin_mobile_002,motorbike,ca,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,lloguer de motos Barcelona,/cat/,false
+ca_pre_trip_origin_desktop_002,motorbike,ca,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,lloguer de motos Barcelona,/cat/,false
+ca_pre_trip_origin_mobile_003,rollerblades,ca,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,lloguer de patins Barcelona,/cat/,false
+ca_pre_trip_origin_desktop_003,rollerblades,ca,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,lloguer de patins Barcelona,/cat/,false
+ca_pre_trip_origin_mobile_004,bike,ca,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,lloguer de bicicletes Barcelona platja,/cat/,false
+ca_pre_trip_origin_desktop_004,bike,ca,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,lloguer de bicicletes Barcelona platja,/cat/,false
+sv_pre_trip_origin_mobile_001,scooter,sv,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,hyra scooter Barcelona,/sv/,false
+sv_pre_trip_origin_desktop_001,scooter,sv,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,hyra scooter Barcelona,/sv/,false
+sv_pre_trip_origin_mobile_002,motorbike,sv,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,hyra motorcykel Barcelona,/sv/,false
+sv_pre_trip_origin_desktop_002,motorbike,sv,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,hyra motorcykel Barcelona,/sv/,false
+sv_pre_trip_origin_mobile_003,rollerblades,sv,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,hyra inlines Barcelona,/sv/,false
+sv_pre_trip_origin_desktop_003,rollerblades,sv,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,hyra inlines Barcelona,/sv/,false
+sv_pre_trip_origin_mobile_004,bike,sv,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,cykeluthyrning Barcelona strand,/sv/,false
+sv_pre_trip_origin_desktop_004,bike,sv,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,cykeluthyrning Barcelona strand,/sv/,false
+pl_pre_trip_origin_mobile_001,scooter,pl,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,wynajem skutera Barcelona,/pl/,false
+pl_pre_trip_origin_desktop_001,scooter,pl,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,wynajem skutera Barcelona,/pl/,false
+pl_pre_trip_origin_mobile_002,motorbike,pl,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,wynajem motocykla Barcelona,/pl/,false
+pl_pre_trip_origin_desktop_002,motorbike,pl,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,wynajem motocykla Barcelona,/pl/,false
+pl_pre_trip_origin_mobile_003,rollerblades,pl,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,wynajem rolek Barcelona,/pl/,false
+pl_pre_trip_origin_desktop_003,rollerblades,pl,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,wynajem rolek Barcelona,/pl/,false
+pl_pre_trip_origin_mobile_004,bike,pl,PRE_TRIP_ORIGIN,,,,,mobile,google,search_console,wynajem roweru Barcelona plaża,/pl/,false
+pl_pre_trip_origin_desktop_004,bike,pl,PRE_TRIP_ORIGIN,,,,,desktop,google,search_console,wynajem roweru Barcelona plaża,/pl/,false
