@@ -42,7 +42,11 @@
 
   const dropdown = $('#langDropdown');
   const trigger = $('#langTrigger');
-  const toggleDropdown = (open) => dropdown?.classList.toggle('open', open);
+  const toggleDropdown = (open) => {
+    if (!dropdown) return;
+    dropdown.classList.toggle('open', open);
+    if (trigger) trigger.setAttribute('aria-expanded', String(open));
+  };
   if (trigger && dropdown) {
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
@@ -59,7 +63,11 @@
 
   const mobileDropdown = $('#langDropdownMobile');
   const mobileTrigger = $('#langTriggerMobile');
-  const toggleMobileDropdown = (open) => mobileDropdown?.classList.toggle('open', open);
+  const toggleMobileDropdown = (open) => {
+    if (!mobileDropdown) return;
+    mobileDropdown.classList.toggle('open', open);
+    if (mobileTrigger) mobileTrigger.setAttribute('aria-expanded', String(open));
+  };
   if (mobileTrigger && mobileDropdown) {
     mobileTrigger.addEventListener('click', (e) => {
       e.preventDefault();
