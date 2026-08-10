@@ -817,23 +817,26 @@
     var topic = (document.getElementById('contactTopic') || {}).value || '';
     var message = (document.getElementById('contactMessage') || {}).value || '';
 
-    if (!name.trim() || !email.trim() || !message.trim()) {
-      alert('Inserisci nome, email e messaggio.');
+    if (typeof form.checkValidity === 'function' && !form.checkValidity()) {
+      if (typeof form.reportValidity === 'function') form.reportValidity();
       return;
     }
 
-    var subject = 'Modulo di contatto RSB: ' + topic;
-    var body = [
-      'Nome: ' + name,
-      'Telefono / WhatsApp: ' + phone,
-      'E-mail: ' + email,
-      'Argomento: ' + topic,
+    var whatsappMessage = [
+      'Ciao RSB, vorrei contattarvi dal sito web.',
+      '',
+      'Nome: ' + name.trim(),
+      'Telefono / WhatsApp: ' + phone.trim(),
+      'Email: ' + email.trim(),
+      'Argomento: ' + topic.trim(),
       '',
       'Messaggio:',
-      message
+      message.trim()
     ].join('\n');
 
-    window.location.href = 'mailto:info@rentalscooterbarcelona.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    var whatsappUrl = 'https://wa.me/34640559468?text=' + encodeURIComponent(whatsappMessage);
+    var opened = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    if (!opened) window.location.href = whatsappUrl;
   });
 })();
 </script></body>
