@@ -689,10 +689,10 @@
 <p class="text-muted section-lead" style="font-size:1.1rem;line-height:1.7">Comentaris seleccionats sobre la ubicació de RSB a prop de la platja, l’accés fàcil i el tracte personal a Vila Olímpica, Barcelona.</p>
 </div>
 <div aria-label="Ressenyes de Google sobre la ubicació i el servei de RSB" class="grid md-2 lg-4" role="list">
-<div class="card-elevated reveal"><div class="card-body"><div aria-hidden="true" style="color:#facc15;margin-bottom:.6rem">★★★★★</div><p style="line-height:1.7">“Petita sorpresa al costat de la platja de Barcelona. Experiència genial, preus raonables i a tocar del passeig marítim.”</p><div class="text-muted" style="margin-top:.8rem;font-weight:700">— Marc Bonet Fernández</div><div class="text-muted" style="margin-top:.25rem;font-size:.9rem">Google Maps review</div></div></div>
-<div class="card-elevated reveal"><div class="card-body"><div aria-hidden="true" style="color:#facc15;margin-bottom:.6rem">★★★★★</div><p style="line-height:1.7">“Molt bona ubicació, just al costat de la platja, del metro i de la parada d’autobús.”</p><div class="text-muted" style="margin-top:.8rem;font-weight:700">— Ivan Chacon</div><div class="text-muted" style="margin-top:.25rem;font-size:.9rem">Google Maps review</div></div></div>
-<div class="card-elevated reveal"><div class="card-body"><div aria-hidden="true" style="color:#facc15;margin-bottom:.6rem">★★★★★</div><p style="line-height:1.7">“Excel·lent. Molt bona ubicació i fàcil accés. Varietat d’opcions per llogar i preus molt correctes.”</p><div class="text-muted" style="margin-top:.8rem;font-weight:700">— Elena Gols</div><div class="text-muted" style="margin-top:.25rem;font-size:.9rem">Google Maps review</div></div></div>
-<div class="card-elevated reveal"><div class="card-body"><div aria-hidden="true" style="color:#facc15;margin-bottom:.6rem">★★★★★</div><p style="line-height:1.7">“Experiència increïble, bona ubicació i personal molt amable. 100% recomanable.”</p><div class="text-muted" style="margin-top:.8rem;font-weight:700">— Rita Conti</div><div class="text-muted" style="margin-top:.25rem;font-size:.9rem">Google Maps review</div></div></div>
+<div class="card-elevated reveal"><div class="card-body"><div aria-hidden="true" style="color:#facc15;margin-bottom:.6rem">★★★★★</div><p style="line-height:1.7">“Petita sorpresa al costat de la platja de Barcelona. Experiència genial, preus raonables i a tocar del passeig marítim.”</p><div class="text-muted" style="margin-top:.8rem;font-weight:700">— Marc Bonet Fernández</div><div class="text-muted" style="margin-top:.25rem;font-size:.9rem">Ressenya de Google Maps</div></div></div>
+<div class="card-elevated reveal"><div class="card-body"><div aria-hidden="true" style="color:#facc15;margin-bottom:.6rem">★★★★★</div><p style="line-height:1.7">“Molt bona ubicació, just al costat de la platja, del metro i de la parada d’autobús.”</p><div class="text-muted" style="margin-top:.8rem;font-weight:700">— Ivan Chacon</div><div class="text-muted" style="margin-top:.25rem;font-size:.9rem">Ressenya de Google Maps</div></div></div>
+<div class="card-elevated reveal"><div class="card-body"><div aria-hidden="true" style="color:#facc15;margin-bottom:.6rem">★★★★★</div><p style="line-height:1.7">“Excel·lent. Molt bona ubicació i fàcil accés. Varietat d’opcions per llogar i preus molt correctes.”</p><div class="text-muted" style="margin-top:.8rem;font-weight:700">— Elena Gols</div><div class="text-muted" style="margin-top:.25rem;font-size:.9rem">Ressenya de Google Maps</div></div></div>
+<div class="card-elevated reveal"><div class="card-body"><div aria-hidden="true" style="color:#facc15;margin-bottom:.6rem">★★★★★</div><p style="line-height:1.7">“Experiència increïble, bona ubicació i personal molt amable. 100% recomanable.”</p><div class="text-muted" style="margin-top:.8rem;font-weight:700">— Rita Conti</div><div class="text-muted" style="margin-top:.25rem;font-size:.9rem">Ressenya de Google Maps</div></div></div>
 </div>
 <div style="margin-top:1.8rem;display:flex;justify-content:center">
 <a class="btn btn-lg btn-outline-dark" href="https://www.google.com/maps?cid=912877649802486634" rel="noopener noreferrer" target="_blank">Llegir més ressenyes a Google Maps</a>
@@ -822,8 +822,9 @@
       return;
     }
 
-    var subject = 'Formulari de contacte RSB: ' + topic;
     var body = [
+      'Hola RSB,',
+      '',
       'Nom: ' + name,
       'Telèfon / WhatsApp: ' + phone,
       'Correu electrònic: ' + email,
@@ -833,7 +834,7 @@
       message
     ].join('\n');
 
-    window.location.href = 'mailto:info@rentalscooterbarcelona.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = 'https://wa.me/34640559468?text=' + encodeURIComponent(body);
   });
 })();
 </script></body>
