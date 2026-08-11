@@ -684,10 +684,10 @@
 <p class="text-muted section-lead" style="font-size:1.1rem;line-height:1.7">Ausgewählte Kommentare zum RSB-Standort nahe dem Strand, zur einfachen Erreichbarkeit und zum persönlichen Service in Vila Olímpica, Barcelona.</p>
 </div>
 <div aria-label="Google-Bewertungen zum Standort und Service von RSB" class="grid md-2 lg-4" role="list">
-<div class="card-elevated reveal"><div class="card-body"><div aria-hidden="true" style="color:#facc15;margin-bottom:.6rem">★★★★★</div><p style="line-height:1.7">“Eine kleine Überraschung direkt am Strand von Barcelona. Tolle Erfahrung, faire Preise und nur wenige Schritte von der Strandpromenade entfernt.”</p><div class="text-muted" style="margin-top:.8rem;font-weight:700">— Marc Bonet Fernández</div><div class="text-muted" style="margin-top:.25rem;font-size:.9rem">Google Maps review</div></div></div>
-<div class="card-elevated reveal"><div class="card-body"><div aria-hidden="true" style="color:#facc15;margin-bottom:.6rem">★★★★★</div><p style="line-height:1.7">“Sehr gute Lage, direkt neben dem Strand, der Metro und der Bushaltestelle.”</p><div class="text-muted" style="margin-top:.8rem;font-weight:700">— Ivan Chacon</div><div class="text-muted" style="margin-top:.25rem;font-size:.9rem">Google Maps review</div></div></div>
-<div class="card-elevated reveal"><div class="card-body"><div aria-hidden="true" style="color:#facc15;margin-bottom:.6rem">★★★★★</div><p style="line-height:1.7">“Ausgezeichnet. Sehr gute Lage, einfacher Zugang, viele Mietoptionen und sehr faire Preise.”</p><div class="text-muted" style="margin-top:.8rem;font-weight:700">— Elena Gols</div><div class="text-muted" style="margin-top:.25rem;font-size:.9rem">Google Maps review</div></div></div>
-<div class="card-elevated reveal"><div class="card-body"><div aria-hidden="true" style="color:#facc15;margin-bottom:.6rem">★★★★★</div><p style="line-height:1.7">“Unglaubliche Erfahrung, gute Lage und sehr freundliches Personal. 100 % empfehlenswert.”</p><div class="text-muted" style="margin-top:.8rem;font-weight:700">— Rita Conti</div><div class="text-muted" style="margin-top:.25rem;font-size:.9rem">Google Maps review</div></div></div>
+<div class="card-elevated reveal"><div class="card-body"><div aria-hidden="true" style="color:#facc15;margin-bottom:.6rem">★★★★★</div><p style="line-height:1.7">“Eine kleine Überraschung direkt am Strand von Barcelona. Tolle Erfahrung, faire Preise und nur wenige Schritte von der Strandpromenade entfernt.”</p><div class="text-muted" style="margin-top:.8rem;font-weight:700">— Marc Bonet Fernández</div><div class="text-muted" style="margin-top:.25rem;font-size:.9rem">Google-Maps-Bewertung</div></div></div>
+<div class="card-elevated reveal"><div class="card-body"><div aria-hidden="true" style="color:#facc15;margin-bottom:.6rem">★★★★★</div><p style="line-height:1.7">“Sehr gute Lage, direkt neben dem Strand, der Metro und der Bushaltestelle.”</p><div class="text-muted" style="margin-top:.8rem;font-weight:700">— Ivan Chacon</div><div class="text-muted" style="margin-top:.25rem;font-size:.9rem">Google-Maps-Bewertung</div></div></div>
+<div class="card-elevated reveal"><div class="card-body"><div aria-hidden="true" style="color:#facc15;margin-bottom:.6rem">★★★★★</div><p style="line-height:1.7">“Ausgezeichnet. Sehr gute Lage, einfacher Zugang, viele Mietoptionen und sehr faire Preise.”</p><div class="text-muted" style="margin-top:.8rem;font-weight:700">— Elena Gols</div><div class="text-muted" style="margin-top:.25rem;font-size:.9rem">Google-Maps-Bewertung</div></div></div>
+<div class="card-elevated reveal"><div class="card-body"><div aria-hidden="true" style="color:#facc15;margin-bottom:.6rem">★★★★★</div><p style="line-height:1.7">“Unglaubliche Erfahrung, gute Lage und sehr freundliches Personal. 100 % empfehlenswert.”</p><div class="text-muted" style="margin-top:.8rem;font-weight:700">— Rita Conti</div><div class="text-muted" style="margin-top:.25rem;font-size:.9rem">Google-Maps-Bewertung</div></div></div>
 </div>
 <div style="margin-top:1.8rem;display:flex;justify-content:center">
 <a class="btn btn-lg btn-outline-dark" href="https://www.google.com/maps?cid=912877649802486634" rel="noopener noreferrer" target="_blank">Mehr Bewertungen auf Google Maps lesen</a>
@@ -810,23 +810,26 @@
     var topic = (document.getElementById('contactTopic') || {}).value || '';
     var message = (document.getElementById('contactMessage') || {}).value || '';
 
-    if (!name.trim() || !email.trim() || !message.trim()) {
-      alert('Bitte gib deinen Namen, deine E-Mail-Adresse und eine Nachricht ein.');
+    if (typeof form.checkValidity === 'function' && !form.checkValidity()) {
+      if (typeof form.reportValidity === 'function') form.reportValidity();
       return;
     }
 
-    var subject = 'RSB Kontaktformular: ' + topic;
-    var body = [
-      'Kontaktperson: ' + name,
-      'Telefon / WhatsApp: ' + phone,
-      'E-Mail: ' + email,
-      'Thema: ' + topic,
+    var whatsappMessage = [
+      'Hallo RSB, ich möchte euch über die Website kontaktieren.',
+      '',
+      'Name: ' + name.trim(),
+      'Telefon / WhatsApp: ' + phone.trim(),
+      'E-Mail: ' + email.trim(),
+      'Thema: ' + topic.trim(),
       '',
       'Nachricht:',
-      message
+      message.trim()
     ].join('\n');
 
-    window.location.href = 'mailto:info@rentalscooterbarcelona.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    var whatsappUrl = 'https://wa.me/34640559468?text=' + encodeURIComponent(whatsappMessage);
+    var opened = window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    if (!opened) window.location.href = whatsappUrl;
   });
 })();
 </script></body>
