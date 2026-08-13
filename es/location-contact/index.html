@@ -870,18 +870,20 @@
       return;
     }
 
-    var subject = 'Formulario de contacto RSB: ' + topic;
-    var body = [
-      'Nombre: ' + name,
-      'Teléfono / WhatsApp: ' + phone,
-      'Email: ' + email,
-      'Tema: ' + topic,
+    var whatsappMessage = [
+      'Hola RSB, quiero contactar desde la web.',
+      '',
+      'Nombre: ' + name.trim(),
+      'Teléfono / WhatsApp: ' + phone.trim(),
+      'Email: ' + email.trim(),
+      'Tema: ' + topic.trim(),
       '',
       'Mensaje:',
-      message
+      message.trim()
     ].join('\n');
 
-    window.location.href = 'mailto:info@rentalscooterbarcelona.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    var whatsappUrl = 'https://wa.me/34640559468?text=' + encodeURIComponent(whatsappMessage);
+    window.location.href = whatsappUrl;
   });
 })();
 </script></body>
