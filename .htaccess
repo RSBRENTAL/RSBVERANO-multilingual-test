@@ -34,6 +34,10 @@ RewriteRule ^(.*)$ https://rentalscooterbarcelona.com/$1? [R=301,L]
 # --------------------------------------------
 # 0C) Redirecciones de index.html e index numerados a URL canónica limpia
 # --------------------------------------------
+# Legacy scooter path from previous site structure
+RewriteRule ^scooter/scooter-page-structure/scooter/index\.html$ https://rentalscooterbarcelona.com/scooter/ [R=301,L,NC]
+RewriteRule ^scooter/scooter-page-structure/scooter/?$ https://rentalscooterbarcelona.com/scooter/ [R=301,L,NC]
+
 # Evita la cadena index3.html -> /cat/map/ -> /cat/location-contact/.
 # Sin QSD ni query de destino, Apache conserva la query original.
 RewriteRule ^cat/map/index3\.html$ https://rentalscooterbarcelona.com/cat/location-contact/ [R=301,L,NC]
@@ -54,6 +58,10 @@ RewriteRule ^rentalbike\.html$ https://rentalscooterbarcelona.com/bike/ [R=301,L
 RewriteRule ^es/es_sitemap\.xml$ https://rentalscooterbarcelona.com/sitemap-es.xml [R=301,L]
 RewriteRule ^sitemap_es\.xml$ https://rentalscooterbarcelona.com/sitemap-es.xml [R=301,L]
 RewriteRule ^sitemap_en\.xml$ https://rentalscooterbarcelona.com/sitemap-en.xml [R=301,L]
+RewriteRule ^Map-prices/?$ https://rentalscooterbarcelona.com/location-contact/ [R=301,L,NC]
+RewriteRule ^es/Prices/inde1x\.html$ https://rentalscooterbarcelona.com/es/Prices/ [R=301,L,NC]
+RewriteRule ^rsb\.html$ https://rentalscooterbarcelona.com/ [R=301,L,NC]
+RewriteRule ^inde2x\.html$ https://rentalscooterbarcelona.com/ [R=301,L,NC]
 
 # --------------------------------------------
 # 0E) Rutas anidadas falsas entre idiomas
