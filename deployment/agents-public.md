@@ -25,7 +25,7 @@ Electric kick scooters and e-bikes are not listed as rental services.
 
 - Free scooter hotel delivery applies to rentals of three or more days.
 - Free luggage storage is available for rental customers.
-- No deposit applies to inline skates, quad roller skates, skateboards and longboards.
+- No deposit applies to bikes, inline skates, quad roller skates, skateboards and longboards.
 - Same-day rentals depend on stock availability.
 - Customers can book and ask for local route advice through WhatsApp.
 
