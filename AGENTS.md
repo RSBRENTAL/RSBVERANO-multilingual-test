@@ -63,7 +63,7 @@ For every affected page, check as applicable:
 - Roller skates are classic quad skates.
 - Free scooter hotel delivery applies to rentals of 3 or more days.
 - Free luggage storage is available for rental customers.
-- No deposit applies to inline skates, roller skates, skateboards and longboards.
+- No deposit applies to bikes, inline skates, roller skates, skateboards and longboards.
 
 
 ## Services to represent accurately
