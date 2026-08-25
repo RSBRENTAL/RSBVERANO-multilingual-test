@@ -1,0 +1,33 @@
+# Operating systems and editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local environments and secrets
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+
+# Python and test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Generated rank-tracker output
+seo-rank-tracker/data/results/*
+!seo-rank-tracker/data/results/.gitkeep
+seo-rank-tracker/reports/*
+!seo-rank-tracker/reports/.gitkeep
+
+# Temporary files, logs and local packages
+*.log
+*.tmp
+*.bak
+*.zip
+*.tar.gz
+tmp/
