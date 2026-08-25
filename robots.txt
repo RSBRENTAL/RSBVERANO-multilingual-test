@@ -1,5 +1,5 @@
 # robots.txt - RSB Rental Scooter Barcelona
-# Actualizado: 2026-06-29
+# Actualizado: 2026-08-25
 # Web multilingue nueva: sitemap index + sitemaps por idioma
 
 User-agent: *
@@ -65,4 +65,3 @@ Allow: /
 # Microsoft/Bing
 User-agent: Bingbot
 Allow: /
-
